@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+
+@layer base {
+  section {
+ @apply py-[75px]    
+  }
+}
+@layer components {
+  .container {
+    @apply max-w-full w-[1440px] mx-auto ;
+  }
+  .btn{
+    @apply bg-[#0067FF] py-[15px] px-[35px] text-white text-[20px] rounded-[50px] hover:bg-[#0056d683] transition-colors duration-300 font-[600] mt-[38px] ;  
+  }
+
+  .heading{
+    @apply text-[44px] font-[700] leading-[48px] text-[#181A1E] ;
+  }
+  .text_para{
+    @apply text-[18px] font-[400] leading-[30px] text-[#4E545F] mt-[18px];
+  }
+  .header{
+    @apply bg-[url('./assets/images/mask.png')] bg-no-repeat bg-cover bg-center h-[70px] flex items-center justify-center;
+  }
+  .hero_section{
+    @apply bg-[url('./assets/images/hero-bg.png')] bg-no-repeat bg-cover bg-center h-[70px] flex items-center justify-center;
+  }
+}
+
+@media only screen and (max-width: 1024) {
+    .container {
+      @apply w-full;
+    }
+    section{
+      @apply py-[35px];
+    }
+  
+}
+
+@media only screen and (max-width: 768px) {
+  
+    .heading{
+      @apply text-[26px] leading-[36px];
+    }
+    .text_para{
+      @apply text-[16px] leading-7 mt-3;
+    }
+  
+}
+
+@keyframes smoothPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+
+@keyframes barMove {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  70% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+
