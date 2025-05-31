@@ -18,10 +18,10 @@ const Header = () => {
   const handleStickHeader = () => {
     window.addEventListener('scroll', () => {
       if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-        headerRef.current.classList.add('sticky_header');
+        headerRef.current.classList.add("sticky_header");
       }
       else {
-        headerRef.current.classList.remove('sticky_header');
+        headerRef.current.classList.remove("sticky_header");
       }
     })
   }
@@ -34,11 +34,11 @@ const Header = () => {
   },[]);
   
   const handleMenuToggle = () => {
-      menuRef.current.classList.toggle('show_menu');
+      menuRef.current.classList.toggle("show_menu");
     
   }
   return (
-    <header className="  header flex items-center  " ref={headerRef}>
+    <header className=" header flex items-center  " ref={headerRef}>
       <div className="container flex  mx-4   justify-between top-[5px]  ">
         <div className="  flex   items-center justify-between ">
           {/* logo */}
@@ -73,7 +73,7 @@ const Header = () => {
               {navLinks.map((link, index) => (
                 <li key={index} className="flex items-center justify-center">
                   <NavLink
-                    to={link.path}
+                    to={link.href}
                     className="text-[#4e5172] font-[500] text-[18px] hover:text-[#4B5DFF] hover:scale-110 transition duration-300 ease-in-out "
                     activeClassName="text-[#4B5DFF] font-bold"
                   >
@@ -100,7 +100,7 @@ const Header = () => {
           </div>
 
           <Link to="/login">
-            <button className="bg-[#4B5DFF]  text-white py-4 px-4 rounded hover:bg-[#3a4bbf]  hover:scale-125 transition duration-300 ease-in-out ">
+            <button className="bg-[#4B5DFF] text-white py-1 px-4 rounded hover:bg-[#3a4bbf] hover:scale-110 transition duration-300 ease-in-out issue_login scale-115  ">
               Login
             </button>
           </Link>

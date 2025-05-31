@@ -29,7 +29,7 @@ const ServicesCard = ({ item, index }) => {
         </div>
       </div> */}
       <div className="w-full flex justify-center px-4 md:px-8 lg:px-12">
-        <div className="w-full max-w-[300px] rounded px-5 py-[30px] flex flex-col justify-between items-center">
+        <div className="w-full max-w-[300px] rounded px-5 py-[30px] flex flex-col justify-between items-center ">
           <h2 className="text-[26px] leading-9 font-[700]">{name}</h2>
 
           {/* Animated bar below title */}

@@ -1,38 +1,38 @@
 export const services = [
   {
     name: "Cancer Care",
-    desc: "World-class care for everyone. Our health System offers unmatched, expert health care. From the lab to the clinic.",
-    bgColor: "rgba(254, 182, 13, .2)",
-    textColor: "#FEB60D",
+    desc: "Compassionate, advanced care with access to leading treatments and personalized support at every step.",
+    bgColor: "rgba(255, 99, 132, 0.2)",
+    textColor: "#FF6384", // soft red-pink for urgency
   },
   {
     name: "Labor & Delivery",
-    desc: "World-class care for everyone. Our health System offers unmatched, expert health care. From the lab to the clinic.",
-    bgColor: "rgba(151, 113, 255, .2)",
-    textColor: "#9771FF",
+    desc: "Expert maternity care with a focus on safety, comfort, and joy for both mother and baby.",
+    bgColor: "rgba(255, 206, 86, 0.2)",
+    textColor: "#FFCE56", // warm yellow for life/new beginnings
   },
   {
     name: "Heart & Vascular",
-    desc: "World-class care for everyone. Our health System offers unmatched, expert health care. From the lab to the clinic.",
-    bgColor: "rgba(1, 181, 197, .2)",
-    textColor: "#01B5C5",
+    desc: "Comprehensive cardiac services with cutting-edge diagnostics and minimally invasive treatments.",
+    bgColor: "rgba(75, 192, 192, 0.2)",
+    textColor: "#4BC0C0", // teal for vitality & circulation
   },
   {
     name: "Mental Health",
-    desc: "World-class care for everyone. Our health System offers unmatched, expert health care. From the lab to the clinic.",
-    bgColor: "rgba(1, 181, 197, .2)",
-    textColor: "#01B5C5",
+    desc: "Supportive and stigma-free care for emotional well-being, therapy, and crisis support.",
+    bgColor: "rgba(153, 102, 255, 0.2)",
+    textColor: "#9966FF", // calming purple for mental balance
   },
   {
     name: "Neurology",
-    desc: "World-class care for everyone. Our health System offers unmatched, expert health care. From the lab to the clinic.",
-    bgColor: "rgba(254, 182, 13, .2)",
-    textColor: "#FEB60D",
+    desc: "Specialized care for brain and nerve disorders with expert teams and advanced technology.",
+    bgColor: "rgba(54, 162, 235, 0.2)",
+    textColor: "#36A2EB", // blue for intellect and calm
   },
   {
     name: "Burn Treatment",
-    desc: "World-class care for everyone. Our health System offers unmatched, expert health care. From the lab to the clinic.",
-    bgColor: "rgba(151, 113, 255, .2)",
-    textColor: "#9771FF",
+    desc: "Advanced treatment for burn injuries with personalized recovery plans and wound care.",
+    bgColor: "rgba(255, 159, 64, 0.2)",
+    textColor: "#FF9F40", // orange for heat and healing
   },
 ];
