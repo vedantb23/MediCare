@@ -79,3 +79,23 @@
 }
 
 
+/* Global scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e5f4f7; /* Light cyan/blue */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #0bc5ea; /* Cyan */
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0883a6; /* Darker on hover */
+}
+
+

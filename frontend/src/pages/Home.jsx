@@ -14,6 +14,7 @@ import { BiSolidRightArrow } from 'react-icons/bi';
 import About from '../components/About/About';
 import CountUp from "react-countup";
 import ServiceList from '../components/Services/ServiceList';
+import DoctorList from '../components/Doctors/DoctorList';
 const Home = () => {
   return (
     <>
@@ -173,7 +174,7 @@ const Home = () => {
 
       {/* virtual treatment */}
       <div className="space h-[5px]"></div>
-      <section className="flex justify-center ">
+      <section className="flex justify-center gap-[90px] ">
         <div className="w-[570px] flex justify-center items-center flex-col">
           <h2 className="heading text-center">
             Get virtual treatment <br /> anytime
@@ -240,6 +241,9 @@ const Home = () => {
       </section>
 
       <div className="space h-[40px]"></div>
+      {/* dotors  */}
+      <DoctorList />
+      <div className="space h-[40px]"></div>
 
       {/*  */}
       <section>
@@ -252,7 +256,7 @@ const Home = () => {
               className="inline-flex items-center text-blue-600 hover:text-blue-400 hover:scale-120 not-last:font-medium transition duration-200 mx-4"
             >
               Rate us here
-              <HiArrowNarrowRight className="inline-block rotate-315" />
+              <HiArrowNarrowRight className="inline-block rotate-" />
             </Link>
           </div>
         </div>

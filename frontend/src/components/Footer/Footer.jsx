@@ -247,14 +247,14 @@ const Footer = () => {
                   return (
                     <li
                       key={path}
-                      className="transition-transform duration-300 ease-in-out hover:scale-125"
+                      className="transition-transform duration-300 ease-in-out hover:scale-120"
                     >
                       <Link
                         to={path}
-                        className="relative inline-block text-black hover:text-blue-600 group transition-colors duration-300 "
+                        className="relative inline-block text-black hover:text-blue-600 group transition-colors duration-300"
                       >
                         {label}
-                        <span className="absolute left-0 -bottom-0.5 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                        <span className="absolute left-0 -bottom-0.5 h-[2px] w-full origin-left scale-x-0 bg-blue-600 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
                       </Link>
                     </li>
                   );

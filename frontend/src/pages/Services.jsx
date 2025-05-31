@@ -1,10 +1,14 @@
 import React from 'react'
-
+import { services } from '../assets/data/services'
+import ServicesCard from '../components/Services/ServicesCard'
 const Services = () => {
   return (
-    <div>
-      Services
-    </div>
+    <div className='grid grid-cols-2 lg:grid-cols-3 gap-5  mt-[55px] '>
+    {services.map((item, index) => (
+      <ServicesCard className="mx-[40px]" item={item} index={index} key={index} />
+    ))}
+
+  </div>
   )
 }
 

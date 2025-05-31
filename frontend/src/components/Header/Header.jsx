@@ -74,10 +74,12 @@ const Header = () => {
                 <li key={index} className="flex items-center justify-center">
                   <NavLink
                     to={link.href}
-                    className="text-[#4e5172] font-[500] text-[18px] hover:text-[#4B5DFF] hover:scale-110 transition duration-300 ease-in-out "
-                    activeClassName="text-[#4B5DFF] font-bold"
+                    className="group relative inline-block transition-transform duration-300 ease-in-out hover:scale-115"
                   >
-                    {link.name}
+                    <span className="relative z-10 text-black transition-colors duration-300 group-hover:text-blue-500">
+                      {link.name}
+                      <span className="absolute left-0 -bottom-0.5 h-[2px] w-full scale-x-0 origin-left bg-blue-600 transition-transform duration-300 ease-in-out group-hover:scale-x-100"></span>
+                    </span>
                   </NavLink>
                 </li>
               ))}
