@@ -9,7 +9,7 @@ import icon03 from "../assets/images/icon03.png";
 import featureImg from "../assets/images/special-img.gif";
 import faqImg from "../assets/images/homepageapp1.avif";
 import FaqList from "../components/Faq/FaqList"
-
+import { HiArrowNarrowRight } from "react-icons/hi";
 import { BiSolidRightArrow } from 'react-icons/bi';
 import About from '../components/About/About';
 import CountUp from "react-countup";
@@ -171,29 +171,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* abput */}
-      <div className="space h-[45px]"></div>
-      <About />
-
-      <div className="gap h-[70px]"></div>
-      {/* servies */}
-      <section className="flex flex-col items-center justify-center  py-10 ">
-        <div className="container flex flex-col items-center justify-center gap-5 py-10 ">
-          <div className="w-[600px] mx-auto ">
-            <h2 className="heading text-center">Our Services</h2>
-            <p className="text_para text-center">
-              We offer a wide range of healthcare services to meet your needs.
-              Our team is dedicated to providing the highest quality care.
-            </p>
-          </div>
-        </div>
-      </section>
-      <div className="space h-[20px]"></div>
-      <section>
-        <ServiceList />
-      </section>
-      <div className="space h-[50px]"></div>
-      {/* featues */}
+      {/* virtual treatment */}
+      <div className="space h-[5px]"></div>
       <section className="flex justify-center ">
         <div className="w-[570px] flex justify-center items-center flex-col">
           <h2 className="heading text-center">
@@ -220,6 +199,29 @@ const Home = () => {
           <img src={featureImg} alt="" className="w-[250px]" />
         </div>
       </section>
+
+      <div className="gap h-[30px]"></div>
+      {/* servies */}
+      <section className="flex flex-col items-center justify-center  py-10 ">
+        <div className="container flex flex-col items-center justify-center gap-5 py-10 ">
+          <div className="w-[600px] mx-auto ">
+            <h2 className="heading text-center">Our Services</h2>
+            <p className="text_para text-center">
+              We offer a wide range of healthcare services to meet your needs.
+              Our team is dedicated to providing the highest quality care.
+            </p>
+          </div>
+        </div>
+      </section>
+      <div className="space h-[20px]"></div>
+
+      {/* 6  */}
+      <section>
+        <ServiceList />
+      </section>
+      <div className="space h-[50px]"></div>
+      {/* features */}
+      <About />
       <div className="space h-[60px]"></div>
 
       {/* faq */}
@@ -243,15 +245,14 @@ const Home = () => {
       <section>
         {/* <div className="container"> */}
         <div className="mx-auto flex flex-col items-center justify-center text-center">
-          <div className="text_para text-center">
-            Our patients' feedback is invaluable to us. Thank you for trusting
-            us with your health.{" "}
+          <div className="text_para text-center flex gap-[14px]">
+            <p>Our patients' feedback is valuable to us. </p>
             <Link
               to="/rate"
-              className="inline-flex items-center text-blue-600 hover:text-blue-400 hover:scale-125 not-last:font-medium transition duration-200 mx-4"
+              className="inline-flex items-center text-blue-600 hover:text-blue-400 hover:scale-120 not-last:font-medium transition duration-200 mx-4"
             >
-              Rate us
-              <span className="ml-1">→</span>
+              Rate us here
+              <HiArrowNarrowRight className="inline-block rotate-315" />
             </Link>
           </div>
         </div>
