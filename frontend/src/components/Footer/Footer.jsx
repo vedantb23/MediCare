@@ -203,6 +203,12 @@ const Footer = () => {
               <span className="footer-logo-text-med">Medi</span>
               <span className="footer-logo-text-care">Care</span>
             </a>
+            {/* <p
+              
+            >
+              Your trusted healthcare partner delivering quality medical
+              services with compassion and care.
+            </p> */}
             <p
               style={{
                 maxWidth: 320,
@@ -210,9 +216,11 @@ const Footer = () => {
                 fontSize: 16,
                 marginTop: 20,
               }}
+               className="relative inline-block text-black hover:text-blue-900 group transition-colors duration-300"
             >
               Your trusted healthcare partner delivering quality medical
               services with compassion and care.
+              <span className="absolute left-0 -bottom-0.5 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
             </p>
 
             <div className="footer-social">
@@ -238,10 +246,16 @@ const Footer = () => {
                   const label = name || display;
                   return (
                     <li
-                      className="hover:scale-125 transition-transform duration-300 ease-in-out"
                       key={path}
+                      className="transition-transform duration-300 ease-in-out hover:scale-125"
                     >
-                      <Link to={path}>{label}</Link>
+                      <Link
+                        to={path}
+                        className="relative inline-block text-black hover:text-blue-600 group transition-colors duration-300 "
+                      >
+                        {label}
+                        <span className="absolute left-0 -bottom-0.5 w-0 h-[2px] bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                      </Link>
                     </li>
                   );
                 })}
