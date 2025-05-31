@@ -36,7 +36,7 @@ const Home = () => {
                   to specialized treatments.
                 </p>
 
-                <button className="btn rounded-md h-[30px] animate-[smoothPulse_1s_ease-in-out_infinite]">
+                <button className="btn rounded-md h-[30px] animate-[smoothPulse_1s_ease-in-out_infinite] cursor-pointer">
                   Request a appointment
                 </button>
               </div>
@@ -242,10 +242,28 @@ const Home = () => {
 
       <div className="space h-[40px]"></div>
       {/* dotors  */}
-      <DoctorList />
+
       <div className="space h-[40px]"></div>
 
       {/*  */}
+      {/* doctorslist */}
+      <section>
+        <div className="container flex flex-col justify-center items-center ">
+          <div className="w-[470px] mx-auto flex flex-col justify-center items-center">
+            <h2 className="heading text-center">Our Doctors</h2>
+            <p className="text_para text-center">
+              Meet our team of experienced healthcare professionals.
+            </p>
+          </div>
+        </div>
+        <div className="space h-[40px]"></div>
+        <DoctorList />
+      </section>
+      <div className="space h-[40px]"></div>
+
+      {/* testimonials */}
+      {/* <Testimonials /> */}
+      {/* <div className="container"> */}
       <section>
         {/* <div className="container"> */}
         <div className="mx-auto flex flex-col items-center justify-center text-center">
@@ -260,10 +278,9 @@ const Home = () => {
             </Link>
           </div>
         </div>
-
-        {/* <Testimonials /> */}
-        {/* </div> */}
       </section>
+      {/* <Testimonials /> */}
+      {/* </div> */}
     </>
   );
 }
