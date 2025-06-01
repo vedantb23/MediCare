@@ -1,4 +1,4 @@
-import { updateDoctor ,deleterDoctor ,getAllDoctor,getSingleDoctor} from "../Controllers/doctorController.js";
+import { updateDoctor ,deleterDoctor ,getAllDoctor,getSingleDoctor,getDoctorProfile} from "../Controllers/doctorController.js";
 import express from "express";
 import { Router } from "express";
 import { authenticate, restrict } from "../auth/verifyToken.js";
@@ -13,5 +13,8 @@ router.delete("/:id", authenticate, restrict(["doctor"]), deleterDoctor);
 
 // nested routes for reviews
 router.use("/:doctorId/reviews", reviewRouter);
+
+router.get('/profile/me', authenticate, restrict(['doctor']), getDoctorProfile);
+
 
 export default router;
