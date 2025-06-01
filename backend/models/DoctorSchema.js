@@ -41,4 +41,5 @@ const DoctorSchema = new mongoose.Schema({
   appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
 });
 
-export default mongoose.model("Doctor", DoctorSchema);
+export default mongoose.models.Doctor || mongoose.model("Doctor", DoctorSchema);
+// 
