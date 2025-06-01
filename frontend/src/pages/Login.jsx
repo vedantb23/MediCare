@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { BASE_URL } from "../../config";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
+import {authContext} from "../context/AuthContext.jsx"
 const Login = () => {
+  const [loading, setloading] = useState(false);
+  const navigate = useNavigate();
   const [formData, setformData] = useState({
     email: "",
     password: "",
   });
-
+  const {dispatch} = useContext(authContext);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setformData((prevData) => ({
@@ -14,7 +20,37 @@ const Login = () => {
       [name]: value,
     }));
   };
+const submithandler = async (e) => {
+    // console.log(formData);
+    e.preventDefault();
+    setloading(true);
+    try {
+      const res = await fetch(`${BASE_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
+      const result = await res.json();
+
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: {
+          user: result.data,
+          role: result.role,
+          token: result.token,
+        },
+      });
+      setloading(false);
+      toast.success(result.message);
+      navigate("/home");
+    } catch (error) {
+      setloading(false);
+      toast.error(error.message);
+    }
+  };
   return (
     <section className="flex items-center justify-center leading-[10vh] bg-gray-100 min-h-[60vh]">
       <div className="w-full max-w-[570px] mx-auto rounded-2xl shadow-md bg-white p-8">
@@ -22,7 +58,7 @@ const Login = () => {
           Hello! <span className="text-blue-600">Welcome</span> Back!
         </h3>
 
-        <form>
+        <form onSubmit={submithandler}>
           <div className="mb-5">
             <input
               type="email"
@@ -50,7 +86,7 @@ const Login = () => {
               type="submit"
               className="w-full bg-blue-600 text-white text-[18px] leading-[30px] rounded-lg px-4 py-3 hover:bg-blue-700 transition"
             >
-              Login
+              {loading ? <HashLoader color="#ffffff" size={40} /> : "Login"}
             </button>
           </div>
 

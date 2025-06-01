@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import userImg from '../../assets/images/avatar-icon.png'
 import { BiMenu } from 'react-icons/bi';
 import CountUp from "react-countup";
-
+import { authContext } from '../../context/AuthContext';
+import { useContext } from 'react';
 const navLinks = [
   { name: "Home", href: "/home" },
   { name: "Find a Doctor", href: "/doctors" },
@@ -15,6 +16,7 @@ const navLinks = [
 const Header = () => {
   const headerRef = useRef(null);
   const menuRef = useRef(null);
+  const { user, role ,token} = useContext(authContext);
   const handleStickHeader = () => {
     window.addEventListener('scroll', () => {
       if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
@@ -38,7 +40,7 @@ const Header = () => {
     
   }
   return (
-    <header className=" header flex items-center  " ref={headerRef}>
+    <header className=" header flex items-center   " ref={headerRef}>
       <div className="container flex  mx-4   justify-between top-[5px]  ">
         <div className="  flex   items-center justify-between ">
           {/* logo */}
@@ -88,24 +90,33 @@ const Header = () => {
         </div>
 
         {/* buttons */}
-        <div className=" flex items-center justify-center gap-4 scale-125">
-          <div className="flex items-center gap-4 hidden">
-            <Link to="/">
-              <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
-                <img
-                  src={userImg}
-                  alt=""
-                  className="w-[35px] h-[35px] rounded-full"
-                />
-              </figure>
+        <div className=" flex items-center justify-center gap-4 scale-125 ">
+          {token && user ? (
+            <div className="flex items-center gap-4">
+              <Link
+                to={`/home/${
+                  role === "doctor" ? "doctors/profile/me" : "users/profile/me"
+                }`}
+              >
+                <figure className="w-[35px] h-[35px] rounded-full cursor-pointer">
+                  <img
+                    src={user?.photo}
+                    alt=""
+                    className="w-[35px] h-[35px] rounded-full"
+                  />
+                </figure>
+              </Link>
+              <h1 className="text-blue-800 hover:underline text-md">
+                {user?.name}
+              </h1>
+            </div>
+          ) : (
+            <Link to="/login">
+              <button className="bg-[#4B5DFF] text-white py-1 px-4 rounded hover:bg-[#3a4bbf] hover:scale-110 transition duration-300 ease-in-out issue_login scale-115">
+                Login
+              </button>
             </Link>
-          </div>
-
-          <Link to="/login">
-            <button className="bg-[#4B5DFF] text-white py-1 px-4 rounded hover:bg-[#3a4bbf] hover:scale-110 transition duration-300 ease-in-out issue_login scale-115  ">
-              Login
-            </button>
-          </Link>
+          )}
         </div>
         <span className="md:hidden  " onClick={handleMenuToggle}>
           <BiMenu className="w-6 h-6 cursor-pointer"> </BiMenu>

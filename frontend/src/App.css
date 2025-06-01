@@ -35,12 +35,13 @@ body {
       transition: scale 0.3s ease-in-out;
       cursor: pointer;
     }
-    /* flex-direction: column; */
-    justify-content: center;
+    flex-direction: column;
+     justify-content: center;
     align-items: center;
-  }
+  } 
+  
 
-}
+ }
 
 @media only screen and (max-width: 768px) {
   .navigation {
