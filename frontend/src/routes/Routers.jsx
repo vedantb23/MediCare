@@ -8,6 +8,10 @@ import Doctors from "../pages/Doctors/Doctors"
 import DoctorDetails from "../pages/Doctors/DoctorDetails";
 import { Link } from 'react-router-dom'
 import { Routes, Route } from 'react-router-dom'
+import MyAccount from '../Dashboard/user-account/MyAccount'
+import Dashboard from '../Dashboard/doctor-account/Dashboard'
+import ProtectedRoutes from './ProtectedRoutes'
+
 const Routers = () => {
   return (
     <Routes>
@@ -18,6 +22,38 @@ const Routers = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="/doctors" element={<Doctors />} />
       <Route path="/doctors/:id" element={<DoctorDetails />} />
+      <Route
+        path="/users/profile/me"
+        element={
+          <ProtectedRoutes allowedRoles={["patient"]}>
+            <MyAccount />
+          </ProtectedRoutes>
+        }
+      />
+      <Route
+        path="/home/users/profile/me"
+        element={
+          <ProtectedRoutes allowedRoles={["patient"]}>
+            <MyAccount />
+          </ProtectedRoutes>
+        }
+      />
+      <Route
+        path="/doctors/profile/me"
+        element={
+          <ProtectedRoutes allowedRoles={["doctor"]}>
+            <Dashboard />
+          </ProtectedRoutes>
+        }
+      />
+      <Route
+        path="/home/doctors/profile/me"
+        element={
+          <ProtectedRoutes allowedRoles={["doctor"]}>
+            <Dashboard />
+          </ProtectedRoutes>
+        }
+      />
       <Route path="/services" element={<Services />} />
       <Route
         path="*"
@@ -33,7 +69,7 @@ const Routers = () => {
               </Link>
               .
             </p>
-            <p className='flex justify-center'>
+            <p className="flex justify-center">
               <Link to="/" className="btn text-gray-500 text-center">
                 Go back to Home
               </Link>{" "}

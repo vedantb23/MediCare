@@ -1,16 +1,15 @@
 import { createContext,useContext,useEffect,useReducer } from "react";
 
 const initialState = {
-    user: localStorage.getItem("user")
-        ? JSON.parse(localStorage.getItem("user"))
-        : null,
-    role: localStorage.getItem("role")
-        ? JSON.parse(localStorage.getItem("role"))
-        : null,
-    token: localStorage.getItem("token")
-        ? JSON.parse(localStorage.getItem("token"))
-        : null,
-}
+  user: localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : null,
+  role: localStorage.getItem("role")
+    ? JSON.parse(localStorage.getItem("role"))
+    : null,
+  token: localStorage.getItem("token") || null, // ✅ fixed
+};
+  
 
 export const authContext = createContext(initialState);
 const authReducer = (state, action) => {
@@ -38,10 +37,16 @@ export const AuthContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(authReducer, initialState);
 
     useEffect(() => {
-        localStorage.setItem("user", JSON.stringify(state.user));
-        localStorage.setItem("role", JSON.stringify(state.role));
-        localStorage.setItem("token", JSON.stringify(state.token));
-    },[state])
+      localStorage.setItem("user", JSON.stringify(state.user));
+      localStorage.setItem("role", JSON.stringify(state.role));
+
+      // ✅ store token as raw string
+      if (state.token) {
+        localStorage.setItem("token", state.token);
+      } else {
+        localStorage.removeItem("token");
+      }
+    }, [state]);
 return (
         <authContext.Provider value={{ user: state.user, role: state.role, token: state.token, dispatch }}>
             {children}
