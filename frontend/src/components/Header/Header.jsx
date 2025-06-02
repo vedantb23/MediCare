@@ -102,13 +102,21 @@ const Header = () => {
                   <img
                     src={user?.photo}
                     alt=""
-                    className="w-[35px] h-[35px] rounded-full"
+                    className="w-[35px] h-[35px] rounded-full hover:border hover:border-blue-400 hover:scale-110 transition-transform duration-300 ease-in-out  "
                   />
                 </figure>
               </Link>
-              <h1 className="text-blue-800 hover:underline text-md">
-                {user?.name}
-              </h1>
+              <Link
+                to={`/home/${
+                  role === "doctor" ? "doctors/profile/me" : "users/profile/me"
+                }`}
+              >
+                <div className='text-[13px] hover:text-blue-800'>
+                  <span>Hey, </span> {user?.name} !
+                </div>
+                
+
+              </Link>
             </div>
           ) : (
             <Link to="/login">
