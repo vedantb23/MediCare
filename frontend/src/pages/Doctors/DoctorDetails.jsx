@@ -90,8 +90,8 @@ const DoctorDetails = () => {
                 Feedback
               </button>
             </div>
-            {tab === "about" && <DoctorAbout />}
-            {tab === "feedback" && <Feedback />}
+            {tab === "about" && <DoctorAbout doctor={doctor} />}
+            {tab === "feedback" && <Feedback doctor={doctor} />}
           </div>
         </section>
         <div className="side w-[280px] top-48">

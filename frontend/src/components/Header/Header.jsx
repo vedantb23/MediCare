@@ -49,7 +49,7 @@ const Header = () => {
             href="/"
             className="cursor-pointer flex   items-center justify-center font-bold "
           >
-            <fuck className="z-99999999 invert-10">
+            <div className="z-99999999 invert-10">
               <img
                 src={logo}
                 className=""
@@ -59,7 +59,7 @@ const Header = () => {
                   filter: "contrast(800%) brightness(110%)",
                 }}
               />
-            </fuck>
+            </div>
             <span className="text-[#4e5172] font-[800] text-2xl items-center justify-center ">
               Medi
             </span>
