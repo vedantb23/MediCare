@@ -51,8 +51,8 @@ const Tabs = ({ tab, settab }) => {
           className={`${
             tab === "settings"
               ? "bg-indigo-500 text-white"
-              : "bg-gray-100 text-gray-700 hover:scale-125  hover:bg-gray-200"
-          } w-full py-2 px-4 rounded-md transition-all hover:scale-125 duration-200`}
+              : "bg-gray-300 text-gray-700 hover:scale-125  hover:bg-gray-200"
+          } w-full py-2 px-4 rounded-md transition-all hover:scale-125 duration-200 h-[30px] animate-[smoothPulse_1s_ease-in-out_infinite] cursor-pointer `}
         >
           Update Your Profile
         </button>

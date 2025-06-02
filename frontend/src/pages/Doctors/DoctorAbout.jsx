@@ -12,7 +12,7 @@ const DoctorAbout = ({
 }) => {
   return (
     <div className=" w-[25vw]  mx-auto my-12 p-8 bg-white rounded-lg transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-600/50  flex flex-col justify-center items-center">
-      <h2 className="text-2xl font-bold mb-6 text-center">About {name}</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center bg-purple-300 rounded-lg *:">About {name}</h2>
 
       {/* Doctor Info Section */}
       <div className="space-y-4 text-xl text-gray-800">
