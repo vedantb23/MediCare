@@ -1,73 +1,105 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
-// Static feedback data
-const feedbacks = [
+const initialDummyReviews = [
   {
-    id: "f1",
-    patientName: "Anjali Sharma",
-    comment:
-      "Dr. Mehra explained everything very clearly and made me feel at ease.",
+    user: { name: "Anjali Sharma" },
+    createdAt: "2025-02-15T10:30:00Z",
+    reviewText: "Explained everything very clearly and made me feel at ease.",
     rating: 5,
-    date: "2024-12-15",
   },
   {
-    id: "f2",
-    patientName: "Rahul Verma",
-    comment: "Very professional and kind. Highly recommended!",
-    rating: 4.5,
-    date: "2025-01-10",
+    user: { name: "Rahul Verma" },
+    createdAt: "2025-01-10T15:45:00Z",
+    reviewText: "Very professional and kind. Highly recommended!",
+    rating: 3,
   },
   {
-    id: "f3",
-    patientName: "Sneha Patil",
-    comment: "Great experience, punctual and friendly doctor.",
-    rating: 4.8,
-    date: "2025-03-03",
+    user: { name: "Karan Singh" },
+    createdAt: "2025-05-01T12:00:00Z",
+    reviewText: "The doctor listened carefully and provided excellent advice.",
+    rating: 2,
   },
 ];
 
-const Feedback = ({ reviews, totalRating }) => {
+const Feedback = ({ reviews = [], totalRating = 0, doctorId, refetch }) => {
   const [rating, setRating] = useState("");
   const [reviewText, setReviewText] = useState("");
+  const [localReviews, setLocalReviews] = useState([
+    ...initialDummyReviews,
+    ...reviews,
+  ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: Implement backend submission
+
+    if (!rating || !reviewText) {
+      toast.error("Please fill out both rating and review.");
+      return;
+    }
+
+    const newReview = {
+      user: { name: "You" },
+      createdAt: new Date().toISOString(),
+      reviewText,
+      rating: parseFloat(rating),
+    };
+
+    setLocalReviews([...localReviews, newReview]);
+    toast.success("Review submitted successfully!");
+    setRating("");
+    setReviewText("");
+  };
+
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    return (
+      <div className="text-blue-600 text-sm flex gap-0.5">
+        {"★".repeat(fullStars)}
+        {hasHalfStar ? "★" : ""}
+      </div>
+    );
   };
 
   return (
-    <div className="max-w-4xl mx-auto my-12 space-y-10">
-      {/* Feedback Section */}
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
-          Patient Feedback
-        </h2>
+    <div className="max-w-4xl mx-auto  w-full my-12 space-y-10">
+      {/* Reviews */}
+      <div className=" p-6 rounded-lg shadow-md">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-bold text-gray-800">
+            All reviews ({localReviews.length})
+          </h2>
+        </div>
+
         <div className="space-y-6">
-          {reviews.map((review, index) => (
+          {localReviews.map((review, index) => (
             <div
               key={index}
-              className="p-4 border border-gray-200 rounded-md bg-gray-50"
+              className="flex justify-between items-start border-b pb-4 border-gray-200"
             >
-              <div className="flex justify-between items-center mb-2">
-                <h4 className="text-lg font-semibold text-gray-900">
-                  {review?.user?.name}
+              <div>
+                <h4 className="text-sm font-semibold text-blue-800">
+                  {review?.user?.name || "Anonymous"}
                 </h4>
-                <span className="text-sm text-gray-500">
-                  {review?.createdAt}
-                </span>
+                <p className="text-xs text-gray-500">
+                  {new Date(review?.createdAt).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                  })}
+                </p>
+                <p className="mt-1 text-sm text-gray-800">
+                  {review.reviewText}
+                </p>
               </div>
-              <p className="text-gray-700 mb-2">"{review.reviewText}"</p>
-              <p className="text-yellow-500 font-medium">
-
-                {/* thius edit  */}
-                Rating: {fb.rating} ⭐
-              </p>
+              <div className="mt-1">{renderStars(review.rating)}</div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Review Form */}
+      {/* Submit Form */}
       <div className="bg-white p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4 text-gray-800">
           Leave a Review
@@ -106,7 +138,6 @@ const Feedback = ({ reviews, totalRating }) => {
           <button
             type="submit"
             className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200"
-            onClick={handleSubmit}
           >
             Submit Review
           </button>

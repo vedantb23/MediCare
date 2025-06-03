@@ -1,5 +1,5 @@
-import Review from '../Models/ReviewSchema.js';
-import Doctor from '../Models/DoctorSchema.js';
+import Review from '../models/ReviewSchema.js';
+import Doctor from '../models/DoctorSchema.js';
 
 // get all reviews 
 export const getAllReviews = async (req, res) => {

@@ -50,7 +50,7 @@ const DoctorDetails = () => {
     <>
       <div className="flex mx-auto w-full justify-center items-start">
         <section className="flex flex-row gap-1 justify-center items-center mx-auto">
-          <div className="container flex flex-col items-center justify-center gap-1 mt-10 w-2/3 ">
+          <div className="container flex flex-col items-center justify-center gap-1 mt-10 w-full ">
             <div className="flex items-center gap-5">
               <figure className="max-w-[200px] max-h-[200px]">
                 <img
@@ -89,12 +89,12 @@ const DoctorDetails = () => {
               </div>
             </div>
 
-            <div className="mt-[50px] border-b flex flex-row gap-[30px] border-solid border-b-gray-800">
+            <div className="mt-[50px] border-b flex justify-center items-center  flex-row gap-[30px] border-solid border-b-gray-800">
               <button
-                className={`py-2 px-5 mr-5 text-[16px] leading-6 transition-colors ${
+                className={`py-2 px-5 mr-5 text-[18px] leading-6 transition-colors ${
                   tab === "about"
-                    ? "border-b-2 border-blue-600 font-semibold text-blue-600"
-                    : "text-gray-600"
+                    ? "border-b-2 border-blue-600 font-semibold text-blue-600 hover:cursor-pointer"
+                    : "text-gray-600  hover:cursor-pointer "
                 }`}
                 onClick={() => setTab("about")}
               >
@@ -102,10 +102,10 @@ const DoctorDetails = () => {
               </button>
 
               <button
-                className={`py-2 px-5 mr-5 text-[16px] leading-6 transition-colors ${
+                className={`py-2 px-5 mr-5 text-[18px]   hover:cursor-pointer leading-6 transition-colors ${
                   tab === "feedback"
                     ? "border-b-2 border-blue-600 font-semibold text-blue-600"
-                    : "text-gray-600"
+                    : "text-gray-600  hover:cursor-pointer "
                 }`}
                 onClick={() => setTab("feedback")}
               >
@@ -113,21 +113,29 @@ const DoctorDetails = () => {
               </button>
             </div>
             {tab === "about" && (
-              <DoctorAbout
-                name={doctor.name}
-                about={doctor.bio}
-                qualifications={doctor.qualifications}
-                experiences={doctor.experiences}
-                phone={doctor.phone}
-                timeSlots={doctor.timeSlots}
+              <div className="scale-90">
+                <DoctorAbout
+                  name={doctor.name}
+                  about={doctor.bio}
+                  qualifications={doctor.qualifications}
+                  experiences={doctor.experiences}
+                  phone={doctor.phone}
+                  timeSlots={doctor.timeSlots}
+                />
+              </div>
+            )}
+            {tab === "feedback" && (
+              <Feedback
+                reviews={doctor.reviews}
+                totalRating={doctor.totalRating}
               />
             )}
-            {tab === "feedback" && <Feedback reviews={doctor.reviews} totalRating={doctor.totalRating} />}
           </div>
         </section>
         <div className="w-[40px]"></div>
-        <div className="side w-[350px] top-48">
+        <div className="side w-[350px] top-48 ">
           <SidePanel
+            doctorId={doctor._id}
             ticketPrice={doctor.ticketPrice}
             timeSlots={doctor.timeSlots}
           />
