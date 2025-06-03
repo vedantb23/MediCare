@@ -112,11 +112,21 @@ const DoctorDetails = () => {
                 Feedback
               </button>
             </div>
-            {tab === "about" && <DoctorAbout doctor={doctor} />}
+            {tab === "about" && (
+              <DoctorAbout
+                name={doctor.name}
+                about={doctor.bio}
+                qualifications={doctor.qualifications}
+                experiences={doctor.experiences}
+                phone={doctor.phone}
+                timeSlots={doctor.timeSlots}
+              />
+            )}
             {tab === "feedback" && <Feedback doctor={doctor} />}
           </div>
         </section>
-        <div className="side w-[280px] top-48">
+        <div className="w-[40px]"></div>
+        <div className="side w-[350px] top-48">
           <SidePanel
             ticketPrice={doctor.ticketPrice}
             timeSlots={doctor.timeSlots}

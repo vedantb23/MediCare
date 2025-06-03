@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import DoctorCrd from './DoctorCrd'
 import {BASE_URL} from "../../../config"
-import useFetchData from "./../../hooks/UsefetchData"
 import { toast } from 'react-toastify'
 import UsefetchData from './../../hooks/UsefetchData'
 const DoctorList = () => {
@@ -15,7 +14,7 @@ const DoctorList = () => {
         {!loading &&
           !error &&
           doctors.map((doctor) => (
-              <DoctorCrd doctor={doctor} key={doctor._id}  />
+            <DoctorCrd key={doctor._id} doctor={doctor} />
           ))}
       </div>
     </>
