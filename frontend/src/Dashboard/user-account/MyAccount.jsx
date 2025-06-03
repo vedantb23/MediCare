@@ -1,13 +1,14 @@
-import React, { useContext ,useState,useEffect} from "react";
+import React, { useContext ,useState,useEffect } from "react";
 import userImg from "../../assets/images/patient-avatar.png";
 import { authContext } from "../../context/AuthContext";
-import { toast, ToastContainer } from "react-toastify";
+import { toast, ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MyBookings from "./MyBookings";
 import ProfileSettings from "./ProfileSettings";
 import UseGetProfile from "../../hooks/UsefetchData";
 import { BASE_URL } from "../../../config";
-import {PacmanLoader} from "react-spinners";
+import { PacmanLoader } from "react-spinners";
+
 const MyAccount = () => {
   const { dispatch } = useContext(authContext);
   const [tab, settab] = useState("bookings");
@@ -22,7 +23,22 @@ const MyAccount = () => {
       theme: "light",
     });
   };
-
+  useEffect(() => {
+    if (error) {
+      toast.error("Sorry! Try Again");
+    } else if (!loading && userData) {
+      toast.success("User Data Fetched Successfully!", {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light", 
+      });
+    } 
+  }, [loading, error, userData]);
     return (
       <>
         <div className="h-4"></div>
@@ -32,8 +48,8 @@ const MyAccount = () => {
               <PacmanLoader color="#36d7b7" size={50} />
             </div>
           )}
-          {error && !loading && toast("Sorry! Try Again ")}
-          {!loading && !error && toast("User Data Fetched Sucessfully!") && (
+          {error && !loading && <h1> ("Sorry! Try Again ")</h1>}
+          {!loading && !error && userData && (
             <>
               {" "}
               <div className="max-w-[1370px] px-5 mx-auto flex flex-col justify-center items-center">

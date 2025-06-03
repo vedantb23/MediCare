@@ -44,8 +44,15 @@ const submithandler = async (e) => {
         },
       });
       setloading(false);
-      toast.success(result.message);
-      navigate("/home");
+      toast.success("Login successful!", {
+        position: "bottom-right",
+        theme: "colored",
+      });
+
+      // Delay navigation just a bit so toast renders before page change
+      setTimeout(() => {
+        navigate("/home");
+      }, 100); // 100ms is enough to register toast
     } catch (error) {
       setloading(false);
       toast.error(error.message);

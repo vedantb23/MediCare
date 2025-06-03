@@ -15,8 +15,12 @@ import About from '../components/About/About';
 import CountUp from "react-countup";
 import ServiceList from '../components/Services/ServiceList';
 import DoctorList from '../components/Doctors/DoctorList';
+import { toast } from 'react-toastify';
+import { useState,useEffect } from 'react';
 const Home = () => {
+
   return (
+  
     <>
       {/* section first  */}
       {/* <div className="space h-[25px]"></div> */}
