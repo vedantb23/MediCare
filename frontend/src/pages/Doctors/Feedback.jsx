@@ -26,7 +26,7 @@ const feedbacks = [
   },
 ];
 
-const Feedback = () => {
+const Feedback = ({ reviews, totalRating }) => {
   const [rating, setRating] = useState("");
   const [reviewText, setReviewText] = useState("");
 
@@ -43,21 +43,23 @@ const Feedback = () => {
           Patient Feedback
         </h2>
         <div className="space-y-6">
-          {feedbacks.map((fb) => (
+          {reviews.map((review, index) => (
             <div
-              key={fb.id}
+              key={index}
               className="p-4 border border-gray-200 rounded-md bg-gray-50"
             >
               <div className="flex justify-between items-center mb-2">
                 <h4 className="text-lg font-semibold text-gray-900">
-                  {fb.patientName}
+                  {review?.user?.name}
                 </h4>
                 <span className="text-sm text-gray-500">
-                  {new Date(fb.date).toLocaleDateString()}
+                  {review?.createdAt}
                 </span>
               </div>
-              <p className="text-gray-700 mb-2">"{fb.comment}"</p>
+              <p className="text-gray-700 mb-2">"{review.reviewText}"</p>
               <p className="text-yellow-500 font-medium">
+
+                {/* thius edit  */}
                 Rating: {fb.rating} ⭐
               </p>
             </div>
@@ -103,7 +105,8 @@ const Feedback = () => {
 
           <button
             type="submit"
-            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200" onClick={ handleSubmit}
+            className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200"
+            onClick={handleSubmit}
           >
             Submit Review
           </button>

@@ -13,7 +13,7 @@ const MyAccount = () => {
   const { dispatch } = useContext(authContext);
   const [tab, settab] = useState("bookings");
   const { data: userData, loading, error } = UseGetProfile(`${BASE_URL}/users/profile/me`)
-  console.log("userdatd",userData)
+  // console.log("userdatd",userData)
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -89,7 +89,10 @@ const MyAccount = () => {
                   >
                     Logout
                   </button>
-                  <button className="bg-red-600 p-3 text-[16px] leading-7 rounded-md text-white w-full hover:scale-120 transition-transform duration-300 cursor-pointer">
+                  <button
+                    className="bg-red-600 p-3 text-[16px] leading-7 rounded-md text-white w-full hover:scale-120 transition-transform duration-300 cursor-pointer "
+                    onClick={handleLogout}
+                   >
                     Delete account
                   </button>
                 </div>

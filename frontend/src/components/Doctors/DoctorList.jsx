@@ -14,7 +14,9 @@ const DoctorList = () => {
         {!loading &&
           !error &&
           doctors.map((doctor) => (
-            <DoctorCrd key={doctor._id} doctor={doctor} />
+            <div className="flex justify-center items-center h-fit">
+              <DoctorCrd key={doctor._id} doctor={doctor} />
+            </div>
           ))}
       </div>
     </>

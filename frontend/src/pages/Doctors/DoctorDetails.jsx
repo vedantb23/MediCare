@@ -122,7 +122,7 @@ const DoctorDetails = () => {
                 timeSlots={doctor.timeSlots}
               />
             )}
-            {tab === "feedback" && <Feedback doctor={doctor} />}
+            {tab === "feedback" && <Feedback reviews={doctor.reviews} totalRating={doctor.totalRating} />}
           </div>
         </section>
         <div className="w-[40px]"></div>

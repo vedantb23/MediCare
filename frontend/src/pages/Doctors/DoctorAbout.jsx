@@ -12,7 +12,9 @@ const DoctorAbout = ({
 }) => {
   return (
     <div className=" w-[25vw]  mx-auto my-12 p-8 bg-white rounded-lg transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-600/50  flex flex-col justify-center items-center">
-      <h2 className="text-2xl font-bold mb-6 text-center bg-purple-300 rounded-lg *:">About {name}</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center bg-purple-300 rounded-lg *:">
+        About {name}
+      </h2>
 
       {/* Doctor Info Section */}
       <div className="space-y-4 text-xl text-gray-800">
@@ -60,31 +62,25 @@ const DoctorAbout = ({
           {phone}
         </p>
 
-        <div>
-          <strong className=" text-red-600 font-medium mt-1">
-            Time Slots:{" "}
+        <div className="mt-4">
+          <strong className="text-red-600 font-medium block mb-2 text-center text-xl">
+            Time Slots
           </strong>
-          <ul>
-            {timeSlots?.map((item, index) => (
-              <li key={index} className="flex flex-col items-start mb-2">
-                <span className="text-[20px] text-red-600 ">
-                  {item.startingTime} - {item.endingTime}
-                </span>
-
-                <p className="text-[18px] font-medium mt-1 text-red-600">
-                  {" "}
-                  Available Days:
-                </p>
-                <ul className="ml-4 list-none flex gap-5 flex-wrap text-red-600">
-                  {item.selectedDays?.map((day, idx) => (
-                    <li key={idx} className="text-[15px]">
-                      {day}
-                    </li>
-                  ))}
-                </ul>
-              </li>
+          <div className="flex flex-col items-center space-y-2">
+            {timeSlots?.map((slot, index) => (
+              <div
+                key={index}
+                className="text-red-600 text-base flex flex-row gap-[5px] font-medium flex items-center space-x-2"
+              >
+                <span className="capitalize">{slot.day}</span>
+                <span>–</span>
+                <span>from</span>
+                <span>{slot.startingTime}</span>
+                <span>to</span>
+                <span>{slot.endingTime}</span>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>

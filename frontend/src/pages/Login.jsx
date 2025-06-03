@@ -4,7 +4,8 @@ import { BASE_URL } from "../../config";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
-import {authContext} from "../context/AuthContext.jsx"
+import { authContext } from "../context/AuthContext.jsx"
+
 const Login = () => {
   const [loading, setloading] = useState(false);
   const navigate = useNavigate();
@@ -44,15 +45,11 @@ const submithandler = async (e) => {
         },
       });
       setloading(false);
+      navigate("/home");
       toast.success("Login successful!", {
         position: "bottom-right",
         theme: "colored",
       });
-
-      // Delay navigation just a bit so toast renders before page change
-      setTimeout(() => {
-        navigate("/home");
-      }, 100); // 100ms is enough to register toast
     } catch (error) {
       setloading(false);
       toast.error(error.message);

@@ -91,7 +91,7 @@ const Dashboard = () => {
                     Bio: {data?.bio}
                   </div>
                 </div>
-                <div className="scale-80">
+                <div className="scale-80 ">
                   <DoctorAbout
                     name={data.name}
                     about={data.about}
