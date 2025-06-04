@@ -9,10 +9,65 @@ import DoctorAbout from "../../pages/Doctors/DoctorAbout"
 import Doctorimg from "../../assets/images/doctor-img02.png";
 import Profile from './Profile';
 import Appointments from './Appointments';
+import { toast } from 'react-toastify';
 const Dashboard = () => {
   const { data, loading, error } = useGetProfile(`${BASE_URL}/doctors/profile/me`)
-  
+  const [appointments, setAppointments] = useState([]);
   const [tab, settab] = useState("overview")
+  const updateBookingStatus = async (bookingId, newStatus) => {
+    try {
+      const response = await fetch(`${BASE_URL}/bookings/${bookingId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({ status: newStatus }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update booking status");
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error updating booking status:", error);
+      throw error; // rethrow for caller to handle
+    }
+  };
+
+  useEffect(() => {
+    const fetchDoctorBookings = async () => {
+      if (data?._id) {
+        try {
+          const res = await fetch(
+            `${BASE_URL}/doctors/appointments/my-appointments`,
+            {
+              headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`,
+              },
+            }
+          );
+          const result = await res.json();
+
+          if (res.ok) {
+            setAppointments(result.data);
+            toast.success("Appointments Fetched!");
+          } else {
+            toast.error(result.message || "Failed to fetch bookings");
+          }
+        } catch (error) {
+          toast.error("Error fetching bookings");
+        }
+      }
+    };
+
+    fetchDoctorBookings();
+  }, [data]);
+  
+  
+
   return (
     <>
       <div className="h-[50px]"></div>
@@ -104,7 +159,10 @@ const Dashboard = () => {
               </div>
             )}
             {tab === "appointments" && (
-              <Appointments appointments={data.appointments} />
+              <Appointments
+                appointments={appointments}
+                updateBookingStatus={updateBookingStatus}
+               />
             )}
             {tab === "settings" && <Profile doctorData={data} />}
           </div>

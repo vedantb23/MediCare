@@ -18,7 +18,7 @@ router.get(
   getBooking
 );
 router.delete("/:id", authenticate, restrict(["patient"]), deleteBooking);
-router.put("/:id", authenticate, restrict(["patient"]), updateBooking);
+router.put("/:id", authenticate, restrict(["patient", "doctor"]), updateBooking);
 router.get("/", authenticate, restrict(["admin"]), getAllBookings);
 
 export default router;

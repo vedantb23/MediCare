@@ -45,22 +45,79 @@ export const deleteBooking = async (req, res) => {
 };
 
 // Update booking by ID
+// export const updateBooking = async (req, res) => {
+//   try {
+//     const updatedBooking = await Booking.findByIdAndUpdate(
+//       req.params.id,
+//       req.body,
+//       { new: true }
+//     );
+//     if (!updatedBooking)
+//       return res
+//         .status(404)
+//         .json({ success: false, message: "Booking not found" });
+//     res.status(200).json({ success: true, booking: updatedBooking });
+//   } catch (error) {
+//     res.status(500).json({ success: false, message: error.message });
+//   }
+// };
 export const updateBooking = async (req, res) => {
   try {
-    const updatedBooking = await Booking.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
-    if (!updatedBooking)
+    const booking = await Booking.findById(req.params.id);
+
+    if (!booking) {
       return res
         .status(404)
         .json({ success: false, message: "Booking not found" });
-    res.status(200).json({ success: true, booking: updatedBooking });
+    }
+
+    // If doctor is updating, allow only status update
+    if (req.role === "doctor") {
+      if (booking.doctor.toString() !== req.userId) {
+        return res.status(403).json({
+          success: false,
+          message: "Forbidden: You can only update your own appointments",
+        });
+      }
+
+      // Allow only status update
+      booking.status = req.body.status || booking.status;
+      await booking.save();
+
+      return res.status(200).json({
+        success: true,
+        message: "Booking status updated",
+        data: booking,
+      });
+    }
+
+    // If patient, allow general update (e.g., cancel)
+    if (req.role === "patient") {
+      const updated = await Booking.findByIdAndUpdate(
+        req.params.id,
+        { $set: req.body },
+        { new: true }
+      );
+
+      return res.status(200).json({
+        success: true,
+        message: "Booking updated successfully",
+        data: updated,
+      });
+    }
+
+    // Otherwise forbidden
+    return res.status(403).json({
+      success: false,
+      message: "You do not have permission to update this booking",
+    });
   } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
+    return res
+      .status(500)
+      .json({ success: false, message: "Server error", error });
   }
 };
+
 
 // Get all bookings (optional)
 export const getAllBookings = async (req, res) => {
