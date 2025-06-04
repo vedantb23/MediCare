@@ -41,7 +41,9 @@ const Home = () => {
                 </p>
 
                 <button className="btn rounded-md h-[30px] animate-[smoothPulse_1s_ease-in-out_infinite] cursor-pointer">
+                  <Link to={'/doctors'}>
                   Request a appointment
+                  </Link>
                 </button>
               </div>
 
