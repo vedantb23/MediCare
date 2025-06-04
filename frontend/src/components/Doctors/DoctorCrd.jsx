@@ -67,7 +67,7 @@ const DoctorCrd = ({ doctor }) => {
         <div className="mt-3 flex gap-3 items-center justify-between">
           Specialization:
           <span className="bg-[#CCF0F3] text-cyan-500  text-[18px] font-semibold mx-4 my-5 rounded-md">
-            {specialization}
+            {specialization === "CHUT" ? "Na" : specialization}
           </span>
           <span className="flex items-center gap-[6px] text-[14px] leading-7">
             <img src={starIcon} alt="rating" />
