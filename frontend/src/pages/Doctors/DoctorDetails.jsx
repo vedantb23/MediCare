@@ -7,6 +7,8 @@ import SidePanel from "./SidePanel";
 
 const DoctorDetails = () => {
   const { id } = useParams();
+  const user = JSON.parse(localStorage.getItem("user"));
+// console.log(user)
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -136,9 +138,10 @@ const DoctorDetails = () => {
         <div className="side w-[350px] top-48 ">
           <SidePanel
             doctorId={doctor._id}
+            userId={user?._id}
             ticketPrice={doctor.ticketPrice}
             timeSlots={doctor.timeSlots}
-          />
+          />  
         </div>
       </div>
       <div className="h-[50px]"></div>

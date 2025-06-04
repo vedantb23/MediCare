@@ -3,8 +3,12 @@ import Booking from "../models/BookingSchema.js";
 export const updateDoctor = async (req, res) => {
     const id = req.params.id;
 
-    try {
-        const updatedDoctor = await Doctor.findByIdAndUpdate(id, { $set: req.body }, { new: true });
+  try {
+    // changechange
+    
+        // const updatedDoctor = await Doctor.findByIdAndUpdate(id, { $set: req.body }, { new: true });
+    // 
+        const updatedDoctor = await Doctor.findByIdAndUpdate(id,  req.body , { new: true });
         res.status(200).json({
             success: true,
             message: 'Doctor updated successfully',
@@ -111,3 +115,44 @@ export const getDoctorProfile = async (req, res) => {
         });
       }
 }
+
+// booking 
+// Create a booking (appointment)
+export const createBooking = async (req, res) => {
+  try {
+    const { doctor, user, ticketPrice, appointmentDate } = req.body;
+
+    if (!doctor || !user || !ticketPrice || !appointmentDate) {
+      return res.status(400).json({
+        success: false,
+        message: "Missing required booking fields.",
+      });
+    }
+
+    const booking = new Booking({
+      doctor,
+      user,
+      ticketPrice,
+      appointmentDate,
+    });
+
+    const savedBooking = await booking.save();
+
+    // Optional: Push booking into doctor's and user's record (if you're tracking it there)
+    await Doctor.findByIdAndUpdate(doctor, {
+      $push: { appointments: savedBooking._id },
+    });
+
+    res.status(201).json({
+      success: true,
+      message: "Booking created successfully",
+      data: savedBooking,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Booking creation failed",
+      error: error.message,
+    });
+  }
+};
