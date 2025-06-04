@@ -45,7 +45,17 @@ const submithandler = async (e) => {
         },
       });
       setloading(false);
-      navigate("/home/users/profile/me");
+      // fiex afetr loginn navigate to 
+      // navigate("/home/users/profile/me");
+      if (result.role === "user" || result.role === "patient") {
+        navigate("/home/users/profile/me");
+      } else if (result.role === "doctor") {
+        navigate("/home/doctors/profile/me");
+      } else {
+        // fallback, maybe redirect home or to an error page
+        navigate("/home");
+      }
+      
       toast.success("Login successful!", {
         position: "bottom-right",
         theme: "colored",
