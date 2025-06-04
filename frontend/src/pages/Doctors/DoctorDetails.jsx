@@ -6,7 +6,7 @@ import Feedback from "./Feedback";
 import SidePanel from "./SidePanel";
 
 import { token } from "../../../config";
-
+import { BASE_URL } from "../../../config";
 const DoctorDetails = () => {
   const { id } = useParams();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -20,7 +20,7 @@ const DoctorDetails = () => {
     const fetchDoctor = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`${BASE_URL}/doctors/${doctorId}`);
+        const response = await fetch(`${BASE_URL}/doctors/${id}`);
 
         if (!response.ok) {
           throw new Error("Doctor not found");
