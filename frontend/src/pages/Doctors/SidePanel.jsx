@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../../../config";
 
 const SidePanel = ({ doctorId, userId, ticketPrice, timeSlots, token }) => {
   const [selectedDate, setSelectedDate] = useState("");
@@ -19,7 +20,7 @@ const SidePanel = ({ doctorId, userId, ticketPrice, timeSlots, token }) => {
     setLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:5000/api/v1/doctors/book`, {
+      const res = await fetch(`${BASE_URL}/doctors/book`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
