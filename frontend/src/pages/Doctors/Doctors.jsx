@@ -4,8 +4,7 @@ import useFetchData from "./../../hooks/UsefetchData";
 import { toast } from "react-toastify";
 import UsefetchData from "./../../hooks/UsefetchData";
 import { useState,useEffect } from 'react';
-import RotatingTriangles from "some-spinner-library";
-
+import { HashLoader } from "react-spinners"; 
 const Doctors = () => {
   const [query, setquery] = useState('')
   const [debounceQuery, setdebounceQuery] = useState("")
@@ -61,15 +60,7 @@ const Doctors = () => {
           <div className="container">
             {loading && (
               <div className="flex justify-center items-center h-20">
-                <RotatingTriangles
-                  visible={true}
-                  height="80"
-                  width="80"
-                  color="#4fa94d"
-                  ariaLabel="rotating-triangles-loading"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                />
+                <HashLoader size={40} color="#4f46e5" />
               </div>
             )}
             {error && <h1>Error occurred while fetching data...</h1>}

@@ -4,23 +4,13 @@ import DoctorCrd from './DoctorCrd'
 import {BASE_URL} from "../../../config"
 import { toast } from 'react-toastify'
 import UsefetchData from './../../hooks/UsefetchData'
-import RotatingTriangles from "some-spinner-library";
+import { HashLoader } from "react-spinners"; 
 
 const DoctorList = () => {
   const {data:doctors,loading,error}=UsefetchData(`${BASE_URL}/doctors`)
   return (
     <>
-      {loading && (
-        <RotatingTriangles
-          visible={true}
-          height="80"
-          width="80"
-          color="#4fa94d"
-          ariaLabel="rotating-triangles-loading"
-          wrapperStyle={{}}
-          wrapperClass=""
-        />
-      )}
+      {loading && <HashLoader size={40} color="#4f46e5" />}
       {error && <h1>Error occurred while fetching data...</h1>}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 mt-[55px]">
         {!loading &&

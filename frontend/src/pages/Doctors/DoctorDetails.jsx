@@ -8,8 +8,7 @@ import SidePanel from "./SidePanel";
 import { token } from "../../../config";
 import { BASE_URL } from "../../../config";
 
-import RotatingTriangles from "some-spinner-library";
-
+import { HashLoader } from "react-spinners"; 
 const DoctorDetails = () => {
   const { id } = useParams();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -41,17 +40,7 @@ const DoctorDetails = () => {
   }, [id]);
 
   if (loading) {
-    return (
-      <RotatingTriangles
-        visible={true}
-        height="80"
-        width="80"
-        color="#4fa94d"
-        ariaLabel="rotating-triangles-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-      />
-    );
+    return <HashLoader size={40} color="#4f46e5" />;
   }
 
   if (error) {
