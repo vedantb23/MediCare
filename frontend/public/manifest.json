@@ -1,0 +1,6 @@
+{
+  "name": "MediCare",
+  "short_name": "MediCare",
+  "start_url": "/",
+  "display": "standalone"
+}
