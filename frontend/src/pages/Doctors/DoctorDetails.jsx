@@ -7,6 +7,9 @@ import SidePanel from "./SidePanel";
 
 import { token } from "../../../config";
 import { BASE_URL } from "../../../config";
+
+import RotatingTriangles from "some-spinner-library";
+
 const DoctorDetails = () => {
   const { id } = useParams();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -38,7 +41,17 @@ const DoctorDetails = () => {
   }, [id]);
 
   if (loading) {
-    return <div className="text-center mt-20">Loading doctor details...</div>;
+    return (
+      <RotatingTriangles
+        visible={true}
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="rotating-triangles-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
+    );
   }
 
   if (error) {
