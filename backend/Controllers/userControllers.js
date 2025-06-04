@@ -103,26 +103,24 @@ export const getUserProfile = async (req, res) => {
   }
 } 
 
-
-export const getMyAppointments = async (req, res) => { 
+export const getMyAppointments = async (req, res) => {
   try {
-    // strep 1 reterve apoi t from bookign
-    const bookings = await Booking.find({ user: req.userId })
-    // step2 extract odcotr id from app booking 
-    const doctorIds = bookings.map(booking => booking.doctor.id);
-    // ste2 retierv doctor usign doctor ids 
-    const doctors = await Doctor.find({ _id: { $in: doctorIds } });
-
+    // Step 1: Retrieve bookings for the user
+    const bookings = await Booking.find({ user: req.userId }).populate(
+      "doctor"
+    );
+    // console.log("Bookings found:", bookings);
     res.status(200).json({
       success: true,
       message: "Appointments retrieved successfully",
-      data: doctors
+      data: bookings, // each booking contains full doctor info
     });
   } catch (error) {
+    console.error("getMyAppointments error:", error);
     res.status(500).json({
       success: false,
       message: "Failed to retrieve appointments",
-      error: error.message
+      error: error.message,
     });
   }
-}
+};

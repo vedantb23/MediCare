@@ -5,6 +5,8 @@ import DoctorAbout from "./DoctorAbout";
 import Feedback from "./Feedback";
 import SidePanel from "./SidePanel";
 
+import { token } from "../../../config";
+
 const DoctorDetails = () => {
   const { id } = useParams();
   const user = JSON.parse(localStorage.getItem("user"));
@@ -141,6 +143,7 @@ const DoctorDetails = () => {
             userId={user?._id}
             ticketPrice={doctor.ticketPrice}
             timeSlots={doctor.timeSlots}
+            token={token}
           />  
         </div>
       </div>

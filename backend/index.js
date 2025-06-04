@@ -9,14 +9,15 @@ import crypto from "crypto";
 import userRoute from './Routes/user.js';
 import doctorRoute from './Routes/doctor.js';
 import reviewRoute from './Routes/review.js';
-
+import bookingroute from "./Routes/booking.js"
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 8000;
 
 const corsOptions = {
-    origin: true,
+  origin: "http://localhost:5173",
+  credentials: true,
 };
 app.get('/', (req, res) => {
     res.send('Hello from the backend!');
@@ -47,6 +48,8 @@ app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/users', userRoute);
 app.use("/api/v1/doctors", doctorRoute);
 app.use("/api/v1/reviews", reviewRoute);
+app.use("/api/v1/bookings", bookingroute);
+
 
 app.listen(port, () => {
     connectDB();

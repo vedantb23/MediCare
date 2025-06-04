@@ -23,7 +23,7 @@ const DoctorCrd = ({ doctor }) => {
   return (
     <>
       {/* <div className="h-[20px]"></div> */}
-      <div className="flex flex-col items-center  bg-slate-300 rounded-3xl w-2/3 bg-linear-300">
+      <div className="flex flex-col items-center  bg-slate-300 rounded-3xl w bg-linear-300">
         <div className="h-[20px]"></div>
         <div className="p-3 lg:p-5 rounded-lg shadow-md  hover:shadow-cyan-300 hover:shadow-lg transition-shadow duration-300 flex justify-center">
           <img
@@ -91,7 +91,7 @@ const DoctorCrd = ({ doctor }) => {
 
         {/* <h3 className="text-[16px] leading-6 font-[500] mt-2">
         +{totalPatients} Patients
-      </h3> */}
+        </h3> */}
 
         <div>
           <strong className="font-semibold text-gray-900 text-[15px]">

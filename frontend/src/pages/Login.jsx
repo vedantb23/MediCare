@@ -45,7 +45,7 @@ const submithandler = async (e) => {
         },
       });
       setloading(false);
-      navigate("/home");
+      navigate("/home/users/profile/me");
       toast.success("Login successful!", {
         position: "bottom-right",
         theme: "colored",
