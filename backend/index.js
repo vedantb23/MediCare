@@ -15,10 +15,10 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5000;
 
-const corsOptions = {
-  origin: "http://localhost:5173",
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: "http://localhost:5173",
+//   credentials: true,
+// };
 app.get('/', (req, res) => {
     res.send('Hello from the backend!');
 }
@@ -43,7 +43,9 @@ const connectDB = async () => {
 // middlewarre
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors({ origin: true, credentials: true }));
+
 app.use('/api/v1/auth', authRoute);
 app.use('/api/v1/users', userRoute);
 app.use("/api/v1/doctors", doctorRoute);
