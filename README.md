@@ -93,3 +93,7 @@ npm run dev
 - Full CRUD operations for users and appointments
 - Clean responsive design
 - Hosted frontend on Vercel, backend on Railway/Deta Space
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for more details.
