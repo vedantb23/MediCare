@@ -20,9 +20,8 @@ const DoctorDetails = () => {
     const fetchDoctor = async () => {
       setLoading(true);
       try {
-        const response = await fetch(
-          `http://localhost:5000/api/v1/doctors/${id}`
-        );
+        const response = await fetch(`${BASE_URL}/doctors/${doctorId}`);
+
         if (!response.ok) {
           throw new Error("Doctor not found");
         }
