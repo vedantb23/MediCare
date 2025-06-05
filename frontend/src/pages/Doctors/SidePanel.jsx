@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import { BASE_URL } from "../../../config";
-
+import { Navigate } from "react-router-dom";
 const SidePanel = ({ doctorId, userId, ticketPrice, timeSlots, token }) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [loading, setLoading] = useState(false);
-
   const handleBookApp = async () => {
     if (!userId) {
       toast.error("Please log in to book an appointment.");
@@ -37,11 +36,12 @@ const SidePanel = ({ doctorId, userId, ticketPrice, timeSlots, token }) => {
       const data = await res.json();
 
       if (res.ok && data.success) {
-        toast.success("Appointment booked successfully!");
-        toast.success(`Appointment Date: ${selectedDate}`);
+        // toast.success("Appointment booked successfully!");
+        toast.success(`Appointment booked successfully for  Date: ${selectedDate}`);
 
         
         setSelectedDate(""); // reset date
+
       } else {
         toast.error(data.message || "Booking failed.");
       }

@@ -81,7 +81,7 @@ const MyBookings = () => {
           <React.Fragment key={booking._id}>
             <div className="h-[10px]" />
 
-            <div className="bg-gray-100 hover:shadow-cyan-400 shadow-xl rounded-2xl p-6 mb-5 flex flex-col md:flex-row justify-between gap-6">
+            <div className="bg-slate-100 hover:shadow-gray-300 shadow-xl rounded-2xl p-6 mb-5 flex flex-col md:flex-row justify-between gap-6 hover:shadow-5xl">
               {/* Left Side: Booking Info */}
               <div className="flex-1 space-y-3 text-gray-700 text-sm">
                 <div className="flex flex-wrap gap-4">
