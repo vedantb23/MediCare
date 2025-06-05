@@ -168,7 +168,7 @@ const Profile = ({ doctorData }) => {
           />
         </div>
         <div>
-          <label className="block font-medium">Phone</label>
+          <label className="block font-medium">Phone(+91)</label>
           <input
             name="phone"
             value={formData.phone}

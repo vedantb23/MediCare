@@ -12,7 +12,7 @@ const DoctorList = () => {
     <>
       {loading && <HashLoader size={40} color="#4f46e5" />}
       {error && <h1>Error occurred while fetching data...</h1>}
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 mt-[55px]">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-1 mt-[55px]">
         {!loading &&
           !error &&
           doctors.map((doctor) => (

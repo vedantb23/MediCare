@@ -4,6 +4,7 @@ import doctorIllustration from "../../assets/images/doctor-illustration.png";
 const DoctorAbout = ({
   name,
   about,
+  photo,
   qualifications,
   experiences,
   phone,
@@ -14,7 +15,7 @@ const DoctorAbout = ({
       {/* Header */}
       <div className="flex gap-10 items-center border-b pb-8">
         <img
-          src={doctorIllustration}
+          src={photo || doctorIllustration}
           alt="Doctor"
           className="w-36 h-36 rounded-full border-4 border-blue-300 shadow-md object-cover"
         />

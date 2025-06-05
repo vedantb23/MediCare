@@ -53,9 +53,9 @@ const DoctorDetails = () => {
 
   return (
     <>
-      <div className="flex mx-auto w-full justify-center items-start">
+      <div className="flex mx-auto gap-[30px] w-full justify-start items-start">
         <section className="flex flex-row gap-1 justify-center items-center mx-auto">
-          <div className="container flex flex-col items-center justify-center gap-1 mt-10 w-full ">
+          <div className=" flex flex-col items-center justify-center mt-10 w-[800px] ">
             <div className="flex items-center gap-5">
               <figure className="max-w-[200px] max-h-[200px]">
                 <img
@@ -118,7 +118,7 @@ const DoctorDetails = () => {
               </button>
             </div>
             {tab === "about" && (
-              <div className="scale-90">
+              <div className="scale-80">
                 <DoctorAbout
                   name={doctor.name}
                   about={doctor.bio}
@@ -130,14 +130,20 @@ const DoctorDetails = () => {
               </div>
             )}
             {tab === "feedback" && (
-              <Feedback
-                reviews={doctor.reviews}
-                totalRating={doctor.totalRating}
-              />
+              <>
+                <div>
+                <div className="h-[20px]"></div>
+                <Feedback
+                  reviews={doctor.reviews}
+                  totalRating={doctor.totalRating}
+                />
+
+                </div>
+              </>
             )}
           </div>
         </section>
-        <div className="w-[40px]"></div>
+        {/* <div className="w-[10px]"></div> */}
         <div className="side w-[350px] top-48 ">
           <SidePanel
             doctorId={doctor._id}
@@ -145,7 +151,7 @@ const DoctorDetails = () => {
             ticketPrice={doctor.ticketPrice}
             timeSlots={doctor.timeSlots}
             token={token}
-          />  
+          />
         </div>
       </div>
       <div className="h-[50px]"></div>

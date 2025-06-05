@@ -23,7 +23,7 @@ const DoctorCrd = ({ doctor }) => {
   return (
     <>
       {/* <div className="h-[20px]"></div> */}
-      <div className="flex flex-col items-center  bg-slate-300 rounded-3xl w bg-linear-300">
+      <div className="flex flex-col items-center  bg-slate-200 rounded-3xl w-[290px] bg-linear-300">
         <div className="h-[20px]"></div>
         <div className="p-3 lg:p-5 rounded-lg shadow-md  hover:shadow-cyan-300 hover:shadow-lg transition-shadow duration-300 flex justify-center">
           <img
@@ -67,7 +67,7 @@ const DoctorCrd = ({ doctor }) => {
         <div className="mt-3 flex gap-3 items-center justify-between">
           Specialization:
           <span className="bg-[#CCF0F3] text-cyan-500  text-[18px] font-semibold mx-4 my-5 rounded-md">
-            {specialization === "CHUT" ? "Na" : specialization}
+            {specialization }
           </span>
           <span className="flex items-center gap-[6px] text-[14px] leading-7">
             <img src={starIcon} alt="rating" />

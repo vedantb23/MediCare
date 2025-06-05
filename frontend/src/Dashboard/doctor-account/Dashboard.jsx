@@ -153,6 +153,7 @@ const Dashboard = () => {
                     qualifications={data.qualifications}
                     experiences={data.experiences}
                     phone={data.phone}
+                    photo={data.photo}
                     timeSlots={data.timeSlots}
                   />
                 </div>
