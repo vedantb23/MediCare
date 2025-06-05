@@ -56,8 +56,8 @@ const Doctors = () => {
           </div>
         </section>
         <div className="space h-[30px]"></div>
-        <section>
-          <div className="container">
+        <section className=''>
+          {/* <div className="container "> */}
             {loading && (
               <div className="flex justify-center items-center h-20">
                 <HashLoader size={40} color="#4f46e5" />
@@ -76,7 +76,7 @@ const Doctors = () => {
                 ))}
               </div>
             )}
-          </div>
+          {/* </div> */}
         </section>
       </div>
     </>

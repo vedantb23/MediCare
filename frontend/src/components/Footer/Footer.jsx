@@ -43,6 +43,7 @@ const linkHoverColor = "#0883a6";
 const Footer = () => {
   return (
     <>
+      <div className="h-[20px]"></div>
       <style>{`
         /* Diagonal split background: left half dark blue, right half cyan */
         .footer-bg {

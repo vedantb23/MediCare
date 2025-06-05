@@ -5,7 +5,7 @@ import moment from "moment";
 import DoctorCrd from "../../components/Doctors/DoctorCrd";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ClipLoader } from "react-spinners";
+import { PropagateLoader } from "react-spinners";
 
 const MyBookings = () => {
   const { data, loading, error } = UsefetchData(
@@ -56,8 +56,8 @@ const MyBookings = () => {
       <h2 className="text-2xl font-bold mb-6">My Appointments</h2>
 
       {loading && (
-        <div className="flex justify-center py-10">
-          <ClipLoader size={40} color="#4f46e5" />
+        <div className="flex justify-center items-center px-10  py-10">
+          <PropagateLoader size={20} color="#4f46e5" />
         </div>
       )}
 
@@ -81,7 +81,7 @@ const MyBookings = () => {
           <React.Fragment key={booking._id}>
             <div className="h-[10px]" />
 
-            <div className="bg-gray-100 hover:shadow-indigo-400 shadow-md rounded-2xl p-6 mb-5 flex flex-col md:flex-row justify-between gap-6">
+            <div className="bg-gray-100 hover:shadow-cyan-400 shadow-xl rounded-2xl p-6 mb-5 flex flex-col md:flex-row justify-between gap-6">
               {/* Left Side: Booking Info */}
               <div className="flex-1 space-y-3 text-gray-700 text-sm">
                 <div className="flex flex-wrap gap-4">
@@ -168,7 +168,7 @@ export default MyBookings;
 // import DoctorCrd from "../../components/Doctors/DoctorCrd";
 // import { Link } from "react-router-dom";
 // import { toast } from "react-toastify";
-// import { ClipLoader } from "react-spinners";
+// import { ClimbingBoxLoader  } from "react-spinners";
 
 // const MyBookings = () => {
 //   const {
@@ -218,7 +218,7 @@ export default MyBookings;
 
 //       {loading && (
 //         <div className="flex justify-center py-10">
-//           <ClipLoader size={40} color="#4f46e5" />
+//           <ClimbingBoxLoader  size={40} color="#4f46e5" />
 //         </div>
 //       )}
 

@@ -10,7 +10,7 @@ const DoctorCrd = ({ doctor }) => {
   const {
     _id,
     name,
-    avgRating,
+    averageRating,
     totalRating,
     photo,
     specialization,
@@ -24,7 +24,7 @@ const DoctorCrd = ({ doctor }) => {
   return (
     <>
       {/* <div className="h-[20px]"></div> */}
-      <div className="flex flex-col items-center  bg-slate-200 rounded-3xl w-[290px] bg-linear-300">
+      <div className="flex flex-col items-center  bg-slate-200 rounded-3xl w-[290px] bg-linear-300  shadow-2xl hover:shadow-3xl transition-all duration-300 ease-in-out hover:scale-[1.03] hover:shadow-indigo-300">
         <div className="h-[20px]"></div>
         <div className="p-3 lg:p-5 rounded-lg shadow-md  hover:shadow-cyan-300 hover:shadow-lg transition-shadow duration-300 flex justify-center">
           <img
@@ -33,7 +33,7 @@ const DoctorCrd = ({ doctor }) => {
             className="w-[220px] object-cover rounded-xl "
           />
         </div>
-
+        <duv className="space h-[5px] "></duv>
         <span className="text-[18px] leading-7 font-[600] mt-4 flex gap-[10px]">
           {name}
           <div className="relative group flex items-center cursor-pointer">
@@ -68,11 +68,11 @@ const DoctorCrd = ({ doctor }) => {
         <div className="mt-3 flex gap-3 items-center justify-between">
           Specialization:
           <span className="bg-[#CCF0F3] text-cyan-500  text-[18px] font-semibold mx-4 my-5 rounded-md">
-            {specialization }
+            {specialization}
           </span>
           <span className="flex items-center gap-[6px] text-[14px] leading-7">
             <img src={starIcon} alt="rating" />
-            {avgRating } ({totalRating })
+            {averageRating} ({totalRating})
           </span>
         </div>
 
@@ -139,6 +139,8 @@ const DoctorCrd = ({ doctor }) => {
           <BiSolidArrowToRight className="text-[20px]" />
         </Link>
       </div>
+
+      {/* <div className="w-[50px]"></div> */}
     </>
   );
 };

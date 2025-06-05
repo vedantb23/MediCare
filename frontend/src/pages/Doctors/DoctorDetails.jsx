@@ -40,7 +40,13 @@ const DoctorDetails = () => {
   }, [id]);
 
   if (loading) {
-    return <HashLoader size={40} color="#4f46e5" />;
+    return (<>
+      <div className="flex flex-col justify-center items-center ">
+        <HashLoader size={40} color="#4f46e5" />
+        <div>Loading...</div>
+      </div>
+    </>
+    )
   }
 
   if (error) {
@@ -75,7 +81,7 @@ const DoctorDetails = () => {
                 </h3>
 
                 <p className="text-[15px] text-gray-500 font-medium mb-2">
-                  Hospital:{doctor.experiences[5]}
+                  Hospital:{doctor.experiences[0]?.hospital}
                 </p>
 
                 <div className="flex items-center gap-[6px] mt-2">
@@ -144,6 +150,7 @@ const DoctorDetails = () => {
         </section>
         {/* <div className="w-[10px]"></div> */}
         <div className="side w-[350px] top-48 ">
+          <div className="h-[25px]"></div>
           <SidePanel
             doctorId={doctor._id}
             userId={user?._id}
