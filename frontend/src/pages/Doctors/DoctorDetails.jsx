@@ -81,7 +81,7 @@ const DoctorDetails = () => {
                 <div className="flex items-center gap-[6px] mt-2">
                   <span className="flex items-center gap-[6px] text-[14px] lg:text-[16px] font-semibold text-gray-800">
                     <img src={starIcon} alt="star" className="w-4 h-4" />
-                    {doctor.avgRating}
+                    {doctor.averageRating}
                   </span>
                   <span className="text-[14px] lg:text-[16px] font-normal text-gray-500">
                     ({doctor.totalRating})
@@ -132,12 +132,11 @@ const DoctorDetails = () => {
             {tab === "feedback" && (
               <>
                 <div>
-                <div className="h-[20px]"></div>
-                <Feedback
-                  reviews={doctor.reviews}
-                  totalRating={doctor.totalRating}
-                />
-
+                  <div className="h-[20px]"></div>
+                  <Feedback
+                    reviews={doctor.reviews}
+                    totalRating={doctor.totalRating}
+                  />
                 </div>
               </>
             )}

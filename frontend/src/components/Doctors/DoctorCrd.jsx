@@ -6,6 +6,7 @@ import { BiSolidArrowToRight } from "react-icons/bi";
 import { useState,useEffect } from "react";
 
 const DoctorCrd = ({ doctor }) => {
+  if (!doctor)  return null;
   const {
     _id,
     name,
@@ -71,7 +72,7 @@ const DoctorCrd = ({ doctor }) => {
           </span>
           <span className="flex items-center gap-[6px] text-[14px] leading-7">
             <img src={starIcon} alt="rating" />
-            {avgRating || 4.2} ({totalRating || 13})
+            {avgRating } ({totalRating })
           </span>
         </div>
 
