@@ -22,28 +22,53 @@ MediCare is a full-stack doctor appointment system that connects patients with d
 
 MediCare/
 ├── backend/
-│   ├── controllers/
-│   ├── models/
-│   ├── routes/
-│   ├── utils/
-│   ├── middleware/
-│   ├── server.js
-│   └── .env
+│   ├── controllers/           # Route handler logic (Doctors, Users, Bookings)
+│   │   ├── doctorController.js
+│   │   ├── userController.js
+│   │   └── bookingController.js
+│   ├── models/                # Mongoose data models
+│   │   ├── Doctor.js
+│   │   ├── User.js
+│   │   └── Booking.js
+│   ├── routes/                # API route definitions
+│   │   ├── doctorRoutes.js
+│   │   ├── userRoutes.js
+│   │   └── bookingRoutes.js
+│   ├── utils/                 # Helper functions (e.g., sendEmail)
+│   │   └── sendEmail.js
+│   ├── middleware/            # Authentication & error handling
+│   │   ├── authMiddleware.js
+│   │   └── errorMiddleware.js
+│   ├── config/                # DB connection & environment
+│   │   └── db.js
+│   ├── .env                   # Environment variables (not pushed to GitHub)
+│   ├── server.js              # Entry point for Express app
+│   └── package.json           # Backend dependencies and scripts
 │
 ├── frontend/
 │   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
 │   │   ├── assets/
-│   │   ├── App.jsx
-│   │   └── main.jsx
+│   │   │   └── images/        # Images like doctor-illustration, icons
+│   │   ├── components/        # Reusable components (Navbar, Footer, Loader)
+│   │   ├── pages/             # Route pages (Home, Login, DoctorDetails)
+│   │   ├── dashboard/         # Doctor & user dashboards
+│   │   ├── App.jsx            # Main app component
+│   │   └── main.jsx           # React DOM render entry
 │   ├── public/
-│   ├── index.html
-│   ├── vite.config.js
-│   └── .env
+│   │   └── index.html         # HTML template
+│   ├── tailwind.config.js     # Tailwind CSS config
+│   ├── postcss.config.js      # PostCSS config
+│   ├── vite.config.js         # Vite dev server config
+│   ├── .env                   # Frontend environment variables
+│   └── package.json           # Frontend dependencies and scripts
 │
-├── README.md
-└── package.json
+├── img/                       # Project documentation images/screenshots
+│   └── preview.png
+│
+├── README.md                  # Project overview and documentation
+├── .gitignore                 # Files ignored by Git
+└── LICENSE                    # Project license
+
 ```
 
 🧪 Local Setup Instructions
