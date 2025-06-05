@@ -70,8 +70,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="h-[50px]"></div>
-      <section className="flex flex-row justify-center items-center gap-10">
+      <div className="h-[50px] "></div>
+      <section className="flex flex-row justify-center items-center gap-30">
         <div className="max-w-[1170px] px-5 mx-auto ">
           {loading && !error && (
             <div className="flex justify-center items-center w-full h-full">
@@ -86,8 +86,8 @@ const Dashboard = () => {
           )}
         </div>
 
-        <div className="conatin2 flex flex-col">
-          <div className="relative top-0 py-0 ">
+        <div className="conatin2 flex flex-col ">
+          <div className="relative top-0 py-0 ">  
             {data.isApproved === "pending" && (
               <div className="flex  text-yellow-800 bg-yellow-100 rounded-lg w-fit text-[14px]">
                 <svg
@@ -112,7 +112,7 @@ const Dashboard = () => {
               </div>
             )}
           </div>
-
+            
           <div className="mt-3">
             {tab === "overview" && (
               <div className="flex flex-row gap-20">
