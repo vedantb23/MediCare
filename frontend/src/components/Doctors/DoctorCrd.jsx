@@ -33,7 +33,7 @@ const DoctorCrd = ({ doctor }) => {
             className="w-[220px] object-cover rounded-xl "
           />
         </div>
-        <duv className="space h-[5px] "></duv>
+        <div className="space h-[5px] "></div>
         <span className="text-[18px] leading-7 font-[600] mt-4 flex gap-[10px]">
           {name}
           <div className="relative group flex items-center cursor-pointer">
@@ -129,15 +129,15 @@ const DoctorCrd = ({ doctor }) => {
           </div>
         </div>
 
-        <Link
-          to={`/doctors/${_id}`}
+        <a
+          href={`/doctors/${_id}`}
           className="bg-blue-600 rounded-full mt-3 flex items-center m-8 gap-2 text-white hover:scale-110 transition-transform duration-300 ease-in-out hover:text-gray-400"
         >
           <span className="text-[16px] leading-6 font-[500] ">
             View Details
           </span>
           <BiSolidArrowToRight className="text-[20px]" />
-        </Link>
+        </a>
       </div>
 
       {/* <div className="w-[50px]"></div> */}

@@ -1,20 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
+
 import { BASE_URL } from "../../../config";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 const SidePanel = ({ doctorId, userId, ticketPrice, timeSlots, token }) => {
   const [selectedDate, setSelectedDate] = useState("");
   const [loading, setLoading] = useState(false);
   const handleBookApp = async () => {
     if (!userId) {
-      toast.error("Please log in to book an appointment.");
+        toast.error("Please log in to book an appointment.");
       return;
     }
 
     if (!selectedDate) {
-      toast.error("Please select a date.");
+        toast.error("Please select a date.");
       return;
     }
+    
 
     setLoading(true);
 
@@ -34,16 +36,18 @@ const SidePanel = ({ doctorId, userId, ticketPrice, timeSlots, token }) => {
       });
 
       const data = await res.json();
-
-      if (res.ok && data.success) {
-        // toast.success("Appointment booked successfully!");
+      // setLoading(false);
+      // setTimeout(() => {
         toast.success(`Appointment booked successfully for  Date: ${selectedDate}`);
-
         
-        setSelectedDate(""); // reset date
-
-      } else {
-        toast.error(data.message || "Booking failed.");
+      // }, 1000);
+      // setTimeout(() => {
+        setSelectedDate("");
+        
+      // }, 1500);
+      
+        if (!res.ok) {
+          toast.error(data.message || "Booking failed.");
       }
     } catch (err) {
       console.error(err);
@@ -52,6 +56,7 @@ const SidePanel = ({ doctorId, userId, ticketPrice, timeSlots, token }) => {
 
     setLoading(false);
   };
+  
 
   return (
     <div className="w-full bg-blue-200 text-gray-900 shadow-lg p-6 rounded-md sticky top-20 scale-110 border-b-gray-800">

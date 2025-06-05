@@ -2,12 +2,31 @@
 
 // Example: import your Booking model here
 import Booking from "../models/BookingSchema.js";
+import {sendEmail} from "../utils/sendEmail.js";
+import User from "../models/UserSchema.js";
+import Doctor from "../models/DoctorSchema.js";
 
 // Create a new booking
 export const createBooking = async (req, res) => {
-  try {
+  try {console.log("chudai start ");
     const newBooking = new Booking(req.body);
     const savedBooking = await newBooking.save();
+    const user = await User.findById(savedBooking.user);
+    const doctor = await Doctor.findById(savedBooking.doctor);
+    await sendEmail(
+      user.email,
+      "Appointment Confirmed - MediCare",
+      `
+        <h2>Hi ${user.name},</h2>
+        <p>Your appointment has been successfully booked.</p>
+        <p><strong>Doctor:</strong> ${doctor.name}</p>
+        <p><strong>Date:</strong> ${savedBooking.date}</p>
+        <p><strong>Time:</strong> ${savedBooking.time}</p>
+        <p><strong>Ticket ID:</strong> ${savedBooking._id}</p>
+        <br/>
+        <p>Thank you for using MediCare.</p>
+      `
+    );
     res.status(201).json({ success: true, booking: savedBooking });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });

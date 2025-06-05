@@ -9,6 +9,7 @@ import {
 } from "../Controllers/bookingController.js";
 
 const router = express.Router();
+console.log("📦 bookingController.createBooking HIT");
 
 router.post("/", authenticate, restrict(["patient"]), createBooking);
 router.get(

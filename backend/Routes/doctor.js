@@ -6,6 +6,7 @@ import reviewRouter from "./review.js";
 import { createBooking } from "../Controllers/doctorController.js";
 import Booking from "../models/BookingSchema.js";
 const router = express.Router();
+console.log("💡 doctorRoute loaded");
 
 router.get('/profile/me', authenticate, restrict(['doctor']), getDoctorProfile);
 

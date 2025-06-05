@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import heroImg01 from "../assets/images/faq-img.png";
-import heroImg02 from "../assets/images/hero-img02.png";
-import heroImg03 from "../assets/images/hero-img01.png";
+import heroImg01 from "../assets/images/newmaindocfinal.jpeg";
+import heroImg02 from "../assets/images/eea621af-f2b7-4aad-8851-a8982bf9e508.jpeg";
+import heroImg03 from "../assets/images/akjfdafjk.jpeg";
 import icon01 from "../assets/images/icon01.png";
 import icon02 from "../assets/images/icon02.png";
 import icon03 from "../assets/images/icon03.png";
@@ -16,11 +16,11 @@ import CountUp from "react-countup";
 import ServiceList from '../components/Services/ServiceList';
 import DoctorList from '../components/Doctors/DoctorList';
 import { toast } from 'react-toastify';
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import featurewalenewwimage from "../assets/images/feature-img.png"
 const Home = () => {
 
   return (
-  
     <>
       {/* section first  */}
       {/* <div className="space h-[25px]"></div> */}
@@ -41,20 +41,18 @@ const Home = () => {
                 </p>
 
                 <button className="btn rounded-md h-[30px] animate-[smoothPulse_1s_ease-in-out_infinite] cursor-pointer">
-                  <Link to={'/doctors'}>
-                  Request a appointment
-                  </Link>
+                  <Link to={"/doctors"}>Request a appointment</Link>
                 </button>
               </div>
 
               {/* hero counter */}
             </div>
             <div className="flex gap-[70px]  justify-end">
-              <div>
+              <div className="shadow-[0_4px_10px_rgba(100,116,139,0.5)] p-6 rounded-lg">
                 <img
                   src={heroImg01}
-                  alt="hero-img Mirrored"
-                  className="w-[250px] h-[400px] object-cover rounded-2xl transform scale-x-[-1] scale-100 hover:scale-x-[-1] hover:scale-105 transition-transform duration-300 ease-in-out  hover:shadow-gray-500/50"
+                  alt=""
+                  className="w-[275px] h-[400px] object-cover rounded-2xl scale-100 hover:scale-105 transition-transform duration-300 ease-in-out  hover:shadow-gray-500/50 shadow-3xl "
                 />
               </div>
               <div className="mt-[30px] flex-col gap-8 flex">
@@ -207,9 +205,9 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="gap h-[30px]"></div>
+      
       {/* servies */}
-      <section className="flex flex-col items-center justify-center  py-10 ">
+      {/* <section className="flex flex-col items-center justify-center  py-10 ">
         <div className="container flex flex-col items-center justify-center gap-5 py-10 ">
           <div className="w-[600px] mx-auto ">
             <h2 className="heading text-center">Our Services</h2>
@@ -219,20 +217,20 @@ const Home = () => {
             </p>
           </div>
         </div>
-      </section>
-      <div className="space h-[20px]"></div>
+      </section> */}
+      {/* <div className="space h-[20px]"></div> */}
 
       {/* 6  */}
-      <section>
+      {/* <section>
         <ServiceList />
-      </section>
+      </section> */}
       <div className="space h-[50px]"></div>
       {/* features */}
       <About />
       <div className="space h-[60px]"></div>
 
-      {/* faq */}
-      <section className="flex justify-center">
+      {/* old faq */}
+      {/* <section className="flex justify-center">
         <div className="container">
           <div className="flex justify-between  ">
             <div className="w-1/2 hidden md:block  ">
@@ -241,6 +239,24 @@ const Home = () => {
             <div className="w-full md:w-1/2">
               <h2 className="heading">Frequently Asked Questions</h2>
               <FaqList />
+            </div>
+          </div>
+        </div>
+      </section> */}
+      <section className="flex justify-center">
+        <div className="container">
+          <div className="flex justify-between">
+            {/* Image Section */}
+            <div className="w-1/2 hidden md:block">
+              <img src={faqImg} alt="" className="w-2/3 left-2" />
+            </div>
+
+            {/* FAQ Section */}
+            <div className="w-full md:w-1/2">
+              <h2 className="heading mb-6">Frequently Asked Questions</h2>
+              <div className="space-y-4 transition-all duration-300">
+                <FaqList />
+              </div>
             </div>
           </div>
         </div>
@@ -254,12 +270,15 @@ const Home = () => {
       {/*  */}
       {/* doctorslist */}
       <section>
-        <div className="container flex flex-col justify-center items-center ">
-          <div className="w-[470px] mx-auto flex flex-col justify-center items-center">
+        <div className="">
+          <div className="mx-auto text-center">
             <h2 className="heading text-center">Our Doctors</h2>
-            <p className="text_para text-center">
-              Meet our team of experienced healthcare professionals.
-            </p>
+            <div className="flex justify-center ">
+              <p className="text_para text-center">
+                Meet our team of experienced and verified healthcare
+                professionals.
+              </p>
+            </div>
           </div>
         </div>
         <div className="space h-[40px]"></div>
@@ -276,7 +295,7 @@ const Home = () => {
           <div className="text_para text-center flex gap-[14px]">
             <p>Our patients' feedback is valuable to us. </p>
             <Link
-              to="/rate"
+              to="/contact"
               className="inline-flex items-center text-blue-600 hover:text-blue-400 hover:scale-120 not-last:font-medium transition duration-200 mx-4"
             >
               Rate us here

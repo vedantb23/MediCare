@@ -20,6 +20,7 @@ const Signup = () => {
     gender: "",
     role: "patient",
   });
+
   const navigate = useNavigate();
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -57,6 +58,8 @@ const Signup = () => {
       toast.error(error.message);
     }
   };
+
+  
   return (
     <section className="px-5 xl:px-0 flex items-center justify-center min-h-screen bg-gray-50">
       <div className="max-w-[1100px] w-full bg-white shadow-md rounded-xl flex flex-col lg:flex-row items-center justify-between p-6 lg:p-12 gap-10">
@@ -72,7 +75,7 @@ const Signup = () => {
           </h3>
 
           <form onSubmit={submithandler} className="flex flex-col gap-5">
-            <div className="mb-4">
+            <div className="mb-4 ">
               <input
                 type="text"
                 name="name"
@@ -83,7 +86,7 @@ const Signup = () => {
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-4 relative group w-full ">
               <input
                 type="email"
                 name="email"
@@ -92,6 +95,10 @@ const Signup = () => {
                 placeholder="Enter your Email"
                 className="w-full px-4 py-3 border border-blue-300 focus:outline-none focus:border-blue-600 rounded-md"
               />
+              {/* */}
+              <div className="absolute left-0  opacity-0 group-hover:opacity-100  -top-5 bg-yellow-300 text-black text-xs px-3 py-1 rounded transition-all duration-300 pointer-events-none">
+                Please enter a valid email to receive appointment Emails and updates !!
+              </div>
             </div>
 
             <div className="mb-4">
