@@ -89,7 +89,7 @@ npm install
 # EMAIL=youremail@gmail.com
 # EMAIL_PASS=your_email_app_password
 
-npm run dev
+npm run start-dev
 
 # Setup frontend
 cd ../frontend
