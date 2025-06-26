@@ -40,7 +40,11 @@ const Header = () => {
     
   }
   return (
-    <header className=" header flex items-center   " ref={headerRef}>
+    <header
+      className=" header flex items-center 
+ "
+      ref={headerRef}
+    >
       <div className="container flex  mx-4   justify-between top-[5px]  ">
         <div className="  flex   items-center justify-between ">
           {/* logo */}
@@ -111,11 +115,9 @@ const Header = () => {
                   role === "doctor" ? "doctors/profile/me" : "users/profile/me"
                 }`}
               >
-                <div className='text-[13px] hover:text-blue-800'>
+                <div className="text-[13px] hover:text-blue-800">
                   <span>Hey, </span> {user?.name} !
                 </div>
-                
-
               </Link>
             </div>
           ) : (

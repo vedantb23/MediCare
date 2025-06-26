@@ -59,9 +59,9 @@ const DoctorDetails = () => {
 
   return (
     <>
-      <div className="flex mx-auto gap-[30px] w-full justify-start items-start">
+      <div className="flex mx-auto gap-[10px] w-full justify-start items-start">
         <section className="flex flex-row gap-1 justify-center items-center mx-auto">
-          <div className=" flex flex-col items-center justify-center mt-10 w-[800px] ">
+          <div className=" flex flex-col items-center justify-center mt-0 w-[800px] ">
             <div className="flex items-center gap-5">
               <figure className="max-w-[200px] max-h-[200px]">
                 <img
@@ -124,7 +124,7 @@ const DoctorDetails = () => {
               </button>
             </div>
             {tab === "about" && (
-              <div className="scale-80">
+              <div className="scale-60">
                 <DoctorAbout
                   name={doctor.name}
                   about={doctor.bio}

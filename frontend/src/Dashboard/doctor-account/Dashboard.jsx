@@ -70,8 +70,8 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="h-[50px] "></div>
-      <section className="flex flex-row justify-center items-center gap-30">
+      {/* <div className="h-[50px] "></div> */}
+      <section className="flex flex-row justify-start items-start gap-30">
         <div className="max-w-[1170px] px-5 mx-auto ">
           {loading && !error && (
             <div className="flex justify-center items-center w-full h-full">
@@ -86,8 +86,8 @@ const Dashboard = () => {
           )}
         </div>
 
-        <div className="conatin2 flex flex-col ">
-          <div className="relative top-0 py-0 ">  
+        <div className="conatin2 ">
+          <div className="relative top-0 py-0 ">
             {data.isApproved === "pending" && (
               <div className="flex  text-yellow-800 bg-yellow-100 rounded-lg w-fit text-[14px]">
                 <svg
@@ -112,10 +112,10 @@ const Dashboard = () => {
               </div>
             )}
           </div>
-            
+
           <div className="mt-3">
             {tab === "overview" && (
-              <div className="flex flex-row gap-20">
+              <div className="flex flex-row gap-2 justify-start items-start">
                 <div className="flex flex-col gap-2 justify-center items-center">
                   <div className="flex items-center gap-4 mb-10 ">
                     <figure className="max-w-[200px] max-h[200px] rounded-lg transition-shadow duration-300 hover:shadow-lg hover:shadow-blue-600/50 ">
@@ -146,7 +146,7 @@ const Dashboard = () => {
                     Bio: {data?.bio}
                   </div>
                 </div>
-                <div className="scale-80 ">
+                <div className=" w-[700px] scale-50 mt-[-360px] ">
                   <DoctorAbout
                     name={data.name}
                     about={data.about}
@@ -163,7 +163,7 @@ const Dashboard = () => {
               <Appointments
                 appointments={appointments}
                 updateBookingStatus={updateBookingStatus}
-               />
+              />
             )}
             {tab === "settings" && <Profile doctorData={data} />}
           </div>

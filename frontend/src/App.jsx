@@ -5,9 +5,12 @@ function App() {
 
 
   return (
-    <>
-   <Layout />
-    </>
+    
+      <div className="min-h-screen">
+        <Layout />
+      
+      </div>
+    
   )
 }
 

@@ -45,7 +45,7 @@ const MyAccount = () => {
   }, [loading, error, userData]);
   return (
     <>
-      <div className="h-4"></div>
+      {/* <div className="h-4"></div> */}
       <section className="flex mx-6">
         {loading && !error && (
           <div className="flex justify-center items-center w-full h-full">
@@ -56,10 +56,10 @@ const MyAccount = () => {
         {!loading && !error && userData && (
           <>
             {" "}
-            <div className="max-w-[590px] px-5 mx-auto flex flex-row justify-start items-start">
-              <div className="w-[100px] "></div>
-              <div className=" gap-10">
-                <div className="pb-[50px] px-[30px] rounded-md">
+            <div className="max-w-[590px] px-5 mx-auto flex flex-row justify-between items-start">
+              {/* <div className="w-[100px] "></div> */}
+              <div className="">
+                <div className="pb-[10px] px-[30px] rounded-md">
                   <div className="flex items-center justify-center">
                     <figure className="w-[100px] h-[100px] rounded-full border-2 border-solid border-primaryColor">
                       <img
@@ -85,7 +85,7 @@ const MyAccount = () => {
                     </span>
                   </p>
                 </div>
-                <div className="space h-[20px]"></div>
+                {/* <div className="space h-[20px]"></div> */}
                 <div className="mt-[50px] md:mt-[100px] flex flex-col md:w-[300px] mx-auto gap-5 justify-center items-center">
                   <button
                     onClick={handleLogout}
@@ -103,9 +103,9 @@ const MyAccount = () => {
               </div>
               <div className="w-[100px]"></div>
               {/* Toast Container */}
-              <ToastContainer />
+              {/* <ToastContainer /> */}
             </div>
-            <div className="h-[39px]"></div>
+            {/* <div className="h-[39px]"></div> */}
             <div className="md:col-span-2 md:px-[30px] flex flex-col justify-between gap-[20px] items-center mt-10">
               <div className="flex flex-col justify-center items-center gap-5">
                 <div className="flex flex-row justify-between items-center gap-8">
@@ -142,7 +142,7 @@ const MyAccount = () => {
           </>
         )}
       </section>
-      <div className="h-8"></div>
+      {/* <div className="h-8"></div> */}
     </>
   );
 };

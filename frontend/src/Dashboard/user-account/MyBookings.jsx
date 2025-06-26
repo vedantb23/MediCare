@@ -142,7 +142,7 @@ const MyBookings = () => {
 
               {/* Right Side: Doctor Card */}
               <div className="w-full md:w-[250px] flex items-start justify-center h-[400px]">
-                <div className="transform scale-[0.7] origin-top">
+                <div className="transform scale-[0.55] origin-top">
                   <DoctorCrd doctor={booking.doctor} compact />
                 </div>
               </div>
