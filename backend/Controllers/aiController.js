@@ -17,9 +17,9 @@ export const triageSymptoms = async (req, res) => {
     }
 
     // 2. Call Python AI service
-    const pyRes = await fetch("http://localhost:8000/triage", {
+    const pyRes = await fetch(`${process.env.AI_SERVICE_URL}`/triage, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },  
       body: JSON.stringify({
         symptoms,
         doctors: doctors.map((d) => ({
