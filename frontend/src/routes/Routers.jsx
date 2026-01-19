@@ -11,7 +11,7 @@ import { Routes, Route } from 'react-router-dom'
 import MyAccount from '../Dashboard/user-account/MyAccount'
 import Dashboard from '../Dashboard/doctor-account/Dashboard'
 import ProtectedRoutes from './ProtectedRoutes'
-
+import SymptomChat from '../pages/SymptomChat'
 const Routers = () => {
   return (
     <Routes>
@@ -55,6 +55,10 @@ const Routers = () => {
         }
       />
       <Route path="/services" element={<Services />} />
+      {/* AI */}
+     
+      <Route path="/symptom-check" element={<SymptomChat />} />
+
       <Route
         path="*"
         element={

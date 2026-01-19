@@ -1,0 +1,63 @@
+/**
+ * Paste one or more documents here
+ */
+{
+  "email": "rohan.mehta@medicare.org",
+  "password": "$2b$10$ULpuJEzmXhl5xB6mOxNYNua2iP6f/5Nc2OAhWmh9VGwpaBcNvZEFy",
+  "name": "Dr. Rohan Mehta",
+  "photo": "https://res.cloudinary.com/dj74ojnrk/image/upload/v1749100831/udsypnzpf0zw1nbmavw7.jpg",
+  "role": "doctor",
+  "qualifications": [
+    {
+      "startingDate": "2010-04-02",
+      "startingYear": "2010",
+      "endingDate": "2015-04-02",
+      "endingYear": "2015",
+      "degree": "MS (Orthopedics)",
+      "university": "Grant Medical College, Mumbai"
+    }
+  ],
+  "experiences": [
+    {
+      "startingDate": "2016-05-01",
+      "startingYear": "2016",
+      "endingDate": "2020-08-02",
+      "endingYear": "2020",
+      "position": "Orthopedic Consultant Surgeon",
+      "hospital": "Fortis Hospital, Mumbai"
+    }
+  ],
+  "timeSlots": [
+    {
+      "day": "Monday",
+      "startingTime": "10:00",
+      "endingTime": "22:00"
+    },
+    {
+      "day": "Tuesday",
+      "startingTime": "10:00",
+      "endingTime": "22:00"
+    },
+    {
+      "day": "Saturday",
+      "startingTime": "06:00",
+      "endingTime": "18:00"
+    },
+    {
+      "day": "Sunday",
+      "startingTime": "06:00",
+      "endingTime": "22:00"
+    }
+  ],
+  "reviews": [],
+  "averageRating": 4,
+  "totalRating": 56,
+  "isApproved": "approved",
+  "appointments": [],
+  "__v": 0,
+  "about": "With over 9 years of experience, Dr. Mehta has performed more than 1500 orthopedic surgeries. He is known for minimally invasive methods and a compassionate approach to care.\n\n",
+  "bio": "Experienced Orthopedic Surgeon specializing in joint replacement and sports injuries. Committed to providing patient-centered care with the latest surgical techniques.",
+  "phone": 98562356,
+  "specialization": "Orthopedia",
+  "ticketPrice": 300
+}

@@ -9,8 +9,9 @@ import { authContext } from '../../context/AuthContext';
 import { useContext } from 'react';
 const navLinks = [
   { name: "Home", href: "/home" },
+  { name: "AI Symptom Checker", href: "/symptom-check" },
   { name: "Find a Doctor", href: "/doctors" },
-  { name: "Services", href: "/services" },
+  // { name: "Services", href: "/services" },
   { name: "Contact", href: "/contact" },
 ];
 const Header = () => {
