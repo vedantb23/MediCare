@@ -2,6 +2,7 @@
 import nodemailer from "nodemailer";
 
 export const sendEmail = async (to, subject, html) => {
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -10,15 +11,17 @@ export const sendEmail = async (to, subject, html) => {
     },
   });
 
-  const mailOptions = {
-    from: `"MediCare" <${process.env.EMAIL_USER}>`,
-    to,
-    subject,
-    html,
-  };
-
   try {
-    await transporter.sendMail(mailOptions);
+  // const mailOptions = {
+   
+  // };
+
+    await transporter.sendMail({
+      from: `"MediCare" <${process.env.EMAIL_USER}>`,
+      to:to,
+      subject:subject,
+      html:html,
+    });
     console.log("✅ Email sent");
   } catch (error) {
     console.error("❌ Email failed:", error);
