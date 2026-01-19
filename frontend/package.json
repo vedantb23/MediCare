@@ -21,6 +21,7 @@
     "react-router-dom": "^7.6.1",
     "react-spinners": "^0.17.0",
     "react-toastify": "^11.0.5",
+    "resend": "^6.8.0",
     "swipe": "^1.7.7",
     "swiper": "^11.2.8"
   },

@@ -1,25 +1,14 @@
 // utils/sendEmail.js
-
 import nodemailer from "nodemailer";
 
 export const sendEmail = async (to, subject, html) => {
-  console.log("EMAIL_USER:", process.env.EMAIL_USER);
-  console.log(
-    "EMAIL_PASS:",
-    process.env.EMAIL_PASS ? "✔️ Present" : "❌ Missing"
-  );
-
- const transporter = nodemailer.createTransport({
-   host: "smtp.gmail.com",
-   port: 587,
-   secure: false, // true for 465
-   auth: {
-     user: process.env.EMAIL_USER,
-     pass: process.env.EMAIL_PASS,
-   },
-   connectionTimeout: 10000,
- });
-
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
   const mailOptions = {
     from: `"MediCare" <${process.env.EMAIL_USER}>`,
@@ -29,9 +18,16 @@ export const sendEmail = async (to, subject, html) => {
   };
 
   try {
-    const info = await transporter.sendMail(mailOptions);
-    console.log("✅ Email sent:", info.response);
+    await transporter.sendMail(mailOptions);
+    console.log("✅ Email sent");
   } catch (error) {
     console.error("❌ Email failed:", error);
   }
 };
+
+// sendEmail(bhavsarvedant9@gmail.com,Test,)
+// await sendEmail(
+//   "bhavsarvedant9@gmail.com",
+//   "Test Email from MediCare",
+//   "<h2>Hello</h2><p>This is a test email.</p>"
+// );

@@ -17,16 +17,19 @@ export const createBooking = async (req, res) => {
       user.email,
       "Appointment Confirmed - MediCare",
       `
-        <h2>Hi ${user.name},</h2>
-        <p>Your appointment has been successfully booked.</p>
-        <p><strong>Doctor:</strong> ${doctor.name}</p>
-        <p><strong>Date:</strong> ${savedBooking.date}</p>
-        <p><strong>Time:</strong> ${savedBooking.time}</p>
-        <p><strong>Ticket ID:</strong> ${savedBooking._id}</p>
-        <br/>
-        <p>Thank you for using MediCare.</p>
-      `
+    <h2>Hi ${user.name},</h2>
+    <p>Your appointment has been successfully booked.</p>
+
+    <p><strong>Doctor:</strong> ${doctor.name}</p>
+    <p><strong>Date:</strong> ${savedBooking.date}</p>
+    <p><strong>Time:</strong> ${savedBooking.time}</p>
+    <p><strong>Ticket ID:</strong> ${savedBooking._id}</p>
+
+    <br/>
+    <p>Thank you for using MediCare.</p>
+  `,
     );
+
     res.status(201).json({ success: true, booking: savedBooking });
   } catch (error) {
     res.status(500).json({ success: false, message: error.message });
