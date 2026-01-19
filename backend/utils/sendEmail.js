@@ -9,13 +9,17 @@ export const sendEmail = async (to, subject, html) => {
     process.env.EMAIL_PASS ? "✔️ Present" : "❌ Missing"
   );
 
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
+ const transporter = nodemailer.createTransport({
+   host: "smtp.gmail.com",
+   port: 587,
+   secure: false, // true for 465
+   auth: {
+     user: process.env.EMAIL_USER,
+     pass: process.env.EMAIL_PASS,
+   },
+   connectionTimeout: 10000,
+ });
+
 
   const mailOptions = {
     from: `"MediCare" <${process.env.EMAIL_USER}>`,
