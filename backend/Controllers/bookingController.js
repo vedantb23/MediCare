@@ -13,6 +13,8 @@ export const createBooking = async (req, res) => {
     const savedBooking = await newBooking.save();
     const user = await User.findById(savedBooking.user);
     const doctor = await Doctor.findById(savedBooking.doctor);
+    console.log("VERIFY:", await transporter.verify());
+    
     await sendEmail(
       user.email,
       "Appointment Confirmed - MediCare",

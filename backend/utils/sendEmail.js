@@ -1,8 +1,9 @@
 // utils/sendEmail.js
+console.log("RUNTIME:", typeof window, process.release?.name);
+
 import nodemailer from "nodemailer";
 
 export const sendEmail = async (to, subject, html) => {
-
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
@@ -12,19 +13,19 @@ export const sendEmail = async (to, subject, html) => {
   });
 
   try {
-  // const mailOptions = {
-   
-  // };
+    // const mailOptions = {
+
+    // };
 
     await transporter.sendMail({
       from: `"MediCare" <${process.env.EMAIL_USER}>`,
-      to:to,
-      subject:subject,
-      html:html,
+      to,
+      subject,
+      html,
     });
     console.log("✅ Email sent");
   } catch (error) {
-    console.error("❌ Email failed:", error);
+    console.error("❌ Email failed:", error?.response || error);
   }
 };
 
