@@ -2,6 +2,8 @@
 
 MediCare is a full-stack doctor appointment system that connects patients with doctors via seamless booking, dashboards, and real-time notifications. It features JWT-based authentication, Nodemailer email confirmations, doctor/patient dashboards, appointment approval, and clean UI using Tailwind and React.
 
+Update v2: AI-powered symptom triage is handled by a FastAPI microservice using Groq LLMs, integrated with a Node.js backend and React frontend.
+
 ![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)
