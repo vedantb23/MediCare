@@ -1,4 +1,10 @@
 from fastapi import FastAPI, HTTPException
+# app = FastAPI()
+app = FastAPI(title="MediCare AI Service")
+@app.get("/")
+def root():
+    return {"status": "HELO FROM AI ", "service": "medicare-ai"}
+
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
@@ -9,7 +15,6 @@ from groq import Groq
 load_dotenv()
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
-app = FastAPI()
 
 class Doctor(BaseModel):
     id: str
