@@ -11,19 +11,19 @@ const AIResultCard = ({ data, onDoctorClick }) => {
       <div className="flex justify-between items-center">
         <h4 className="font-semibold flex rounded">
           Specialization Field:
-          <h4 className="bg-cyan-300 ">{data.specialization}</h4>
+          <h4 className="bg-cyan-300 ">{data.doctor.specialization}</h4>
         </h4>
-        <span
-          className={`px-2 py-1 text-sm rounded ${urgencyStyles[data.urgency]}`}
-        >
-          Urgency: {data.urgency}
+        <span className={`px-2 py-1 text-sm rounded bg-red-100 text-red-700`}>
+          Urgency: High
         </span>
       </div>
 
       <div>
         <p className="font-medium">Suggested Doctor</p>
         <button className="text-blue-600 underline">
-          <a target="_blank" href={`/doctors/${data.doctor.id}`}>{data.doctor.name}</a>
+          <a target="_blank" href={`/doctors/${data.doctor.id}`}>
+            {data.doctor.name}
+          </a>
         </button>
       </div>
 
