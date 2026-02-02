@@ -5,26 +5,28 @@ import User from "../models/UserSchema.js";
 import { sendEmail } from "../utils/sendEmail.js";
 
 export const updateDoctor = async (req, res) => {
-    const id = req.params.id;
+  const id = req.params.id;
 
   try {
     // changechange
-    
-        // const updatedDoctor = await Doctor.findByIdAndUpdate(id, { $set: req.body }, { new: true });
-    // 
-        const updatedDoctor = await Doctor.findByIdAndUpdate(id,  req.body , { new: true });
-        res.status(200).json({
-            success: true,
-            message: 'Doctor updated successfully',
-            data: updatedDoctor
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: 'Failed to update Doctor',
-            error: error.message
-        });
-    }
+
+    // const updatedDoctor = await Doctor.findByIdAndUpdate(id, { $set: req.body }, { new: true });
+    //
+    const updatedDoctor = await Doctor.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      success: true,
+      message: "Doctor updated successfully",
+      data: updatedDoctor,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to update Doctor",
+      error: error.message,
+    });
+  }
 };
 
 export const deleterDoctor = async (req, res) => {
@@ -34,13 +36,13 @@ export const deleterDoctor = async (req, res) => {
     await Doctor.findByIdAndDelete(id);
     res.status(200).json({
       success: true,
-      message: 'Doctor deleted successfully'
+      message: "Doctor deleted successfully",
     });
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Failed to delete Doctor',
-      error: error.message
+      message: "Failed to delete Doctor",
+      error: error.message,
     });
   }
 };
@@ -64,19 +66,23 @@ export const getSingleDoctor = async (req, res) => {
   }
 };
 
-
-
 export const getAllDoctor = async (req, res) => {
-    try {
-
-        const { query } = req.query;
-        let doctors;
-        if (query) {
-            doctors = await Doctor.find({ isApproved: "approved", $or: [{ name: { $regex: query, $options: 'i' } }, { specialization: { $regex: query, $options: 'i' } }] }).select("-password");
-        }
-        else {
-            doctors= await Doctor.find({ isApproved: "approved" }).select("-password");
-        }
+  try {
+    const { query } = req.query;
+    let doctors;
+    if (query) {
+      doctors = await Doctor.find({
+        isApproved: "approved",
+        $or: [
+          { name: { $regex: query, $options: "i" } },
+          { specialization: { $regex: query, $options: "i" } },
+        ],
+      }).select("-password");
+    } else {
+      doctors = await Doctor.find({ isApproved: "approved" }).select(
+        "-password",
+      );
+    }
 
     res.status(200).json({
       success: true,
@@ -93,41 +99,41 @@ export const getAllDoctor = async (req, res) => {
 };
 
 export const getDoctorProfile = async (req, res) => {
-    const doctorId = req.userId; // Assuming you have middleware that sets req.user
-    
-      try {
-        const doctor = await Doctor.findById(doctorId);
-        if (!doctor) {
-          return res.status(404).json({
-            success: false,
-            message: "Doctor not found",
-          });
-        }
+  const doctorId = req.userId; // Assuming you have middleware that sets req.user
 
-        const { password, ...rest } = doctor._doc;
-        const appointments=await Booking.find({doctor:doctorId}) 
-        res.status(200).json({
-          success: true,
-          message: "Doctor profile retrieved successfully",
-          data: { ...rest, appointments },
-        });
-      } catch (error) {
-        res.status(500).json({
-          success: false,
-          message: "Failed to retrieve doctor profile",
-          error: error.message,
-        });
-      }
-}
+  try {
+    const doctor = await Doctor.findById(doctorId);
+    if (!doctor) {
+      return res.status(404).json({
+        success: false,
+        message: "Doctor not found",
+      });
+    }
 
-// booking 
+    const { password, ...rest } = doctor._doc;
+    const appointments = await Booking.find({ doctor: doctorId });
+    res.status(200).json({
+      success: true,
+      message: "Doctor profile retrieved successfully",
+      data: { ...rest, appointments },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Failed to retrieve doctor profile",
+      error: error.message,
+    });
+  }
+};
+
+// booking
 // Create a booking (appointment)
 // node maier code
 // export const createBooking = async (req, res) => {
-  //   try {
-    //     const { doctor, user, ticketPrice, appointmentDate } = req.body;
-    
-    //     if (!doctor || !user || !ticketPrice || !appointmentDate) {
+//   try {
+//     const { doctor, user, ticketPrice, appointmentDate } = req.body;
+
+//     if (!doctor || !user || !ticketPrice || !appointmentDate) {
 //       return res.status(400).json({
 //         success: false,
 //         message: "Missing required booking fields.",
@@ -229,9 +235,8 @@ export const createBooking = async (req, res) => {
             <p style="color: #888; font-size: 14px;">This is an automated message. Please do not reply.</p>
           </div>
         </div>
-      `
+      `,
     );
-    
 
     res.status(201).json({
       success: true,
