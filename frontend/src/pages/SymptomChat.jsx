@@ -16,8 +16,8 @@ const SymptomChat = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  
-    
+  const [Doctor_send, setDoctor_send] = useState(null);
+
   const handleSend = async () => {
     if (!input.trim()) return;
 
@@ -31,15 +31,18 @@ const SymptomChat = () => {
     setInput("");
     setLoading(true);
 
+    //ML-model API: https://shamalllll-medicare-ml-backend.hf.space/
     try {
-      const fetchPromise = fetch(`${BASE_URL}/ai/triage`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+      const fetchPromise = fetch(
+        `https://shamalllll-medicare-ml-backend.hf.space/predict`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ symptoms }),
         },
-        body: JSON.stringify({ symptoms }),
-      }).then(async (res) => {
+      ).then(async (res) => {
         const data = await res.json();
 
         if (!res.ok) {
@@ -54,8 +57,26 @@ const SymptomChat = () => {
         success: "Done!",
         error: (err) => err.message || "Server busy. Try later.",
       });
-
+      console.log("ML output", data);
       // push AI structured result
+      const dt = await fetch(
+        "https://medicare-6y20.onrender.com/api/v1/doctors/doctorbyspecialization",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            specialization: data.specialization,
+          }),
+        },
+      );
+
+      const result = await dt.json();
+
+      console.log("recieved this doctor from ML model->", result);
+      setDoctor_send(result);
+
       setMessages((prev) => [
         ...prev,
         { sender: "ai", type: "result", content: data },
@@ -73,6 +94,48 @@ const SymptomChat = () => {
       setLoading(false);
     }
 
+    //this is old groq llm AI API backend
+    // try {
+    //   const fetchPromise = fetch(`${BASE_URL}/ai/triage`, {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //       Authorization: `Bearer ${token}`,
+    //     },
+    //     body: JSON.stringify({ symptoms }),
+    //   }).then(async (res) => {
+    //     const data = await res.json();
+
+    //     if (!res.ok) {
+    //       throw new Error(data.message || "Server busy");
+    //     }
+
+    //     return data;
+    //   });
+
+    //   const data = await toast.promise(fetchPromise, {
+    //     loading: "Generating AI response...",
+    //     success: "Done!",
+    //     error: (err) => err.message || "Server busy. Try later.",
+    //   });
+
+    //   // push AI structured result
+    //   setMessages((prev) => [
+    //     ...prev,
+    //     { sender: "ai", type: "result", content: data },
+    //   ]);
+    // } catch (err) {
+    //   setMessages((prev) => [
+    //     ...prev,
+    //     {
+    //       sender: "ai",
+    //       type: "text",
+    //       content: err.message || "AI busy. Try again later.",
+    //     },
+    //   ]);
+    // } finally {
+    //   setLoading(false);
+    // }
 
     //OLD CODE
 
@@ -111,14 +174,12 @@ const SymptomChat = () => {
     // }
   };
 
-
-
   return (
     // <section className="m-auto min-h-[70vh] bg-gray-100 flex flex-col max-w-[80vw]">
     <section className="top-0 mx-auto h-[90vh] bg-gray-100 flex flex-col max-w-[80vw]">
       {/* CHAT AREA */}
       {/* <button onClick={notify}>Make me a toast</button> */}
-      <Toaster /> 
+      <Toaster />
       <div className=" mx-auto ">
         AI-driven symptom triage using our internal doctor database
       </div>
@@ -141,11 +202,7 @@ const SymptomChat = () => {
 
           if (msg.type === "result") {
             return (
-              <AIResultCard
-                key={idx}
-                data={msg.content}
-                onDoctorClick={(id) => navigate(`/doctors/${id}`)}
-              />
+              <AIResultCard key={idx} data={msg.content} doctor={Doctor_send} />
             );
           }
 

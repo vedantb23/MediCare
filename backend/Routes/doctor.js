@@ -5,6 +5,7 @@ import { authenticate, restrict } from "../auth/verifyToken.js";
 import reviewRouter from "./review.js";
 import { createBooking } from "../Controllers/doctorController.js";
 import Booking from "../models/BookingSchema.js";
+import Doctor from "../models/DoctorSchema.js";
 const router = express.Router();
 console.log("💡 doctorRoute loaded");
 
@@ -48,6 +49,15 @@ router.get("/doctors/:doctorId", async (req, res) => {
     res.status(500).json({ success: false, message: err.message });
   }
 });
-
+router.post("/doctorbyspecialization",async (req,res) => {
+  const specialization = await req.body.specialization;
+  console.log("backend revived spec=", specialization);
+  const doctor = await Doctor.findOne({
+    specialization:specialization
+  })
+  res.status(200).json({
+    data: doctor,
+  });
+})
 
 export default router;
