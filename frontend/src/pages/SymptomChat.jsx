@@ -74,7 +74,7 @@ const SymptomChat = () => {
       );
 
       const result = await dt.json();
-      if (!result) {
+      if (!result.data) {
         const getGenralDoctor = await fetch(
           `${BASE_URL}/doctors/696e5033e61ef7b57b3b7b29`,
           {
@@ -83,14 +83,11 @@ const SymptomChat = () => {
               "Content-Type": "application/json",
             },
           },
-
         );
         const generalDocData = await getGenralDoctor.json();
         setDoctor_send(generalDocData);
         console.log("Fetched General Med Doctor->", generalDocData);
-      }
-      else {
-        
+      } else {
         console.log("recieved this doctor from ML model->", result);
         setDoctor_send(result);
       }
