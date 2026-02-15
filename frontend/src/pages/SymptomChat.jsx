@@ -59,6 +59,7 @@ const SymptomChat = () => {
       });
       console.log("ML output", data);
       // push AI structured result
+      // "General Medicine"
       const dt = await fetch(
         "https://medicare-6y20.onrender.com/api/v1/doctors/doctorbyspecialization",
         {
@@ -73,9 +74,26 @@ const SymptomChat = () => {
       );
 
       const result = await dt.json();
+      if (!result) {
+        const getGenralDoctor = await fetch(
+          `${BASE_URL}/doctors/696e5033e61ef7b57b3b7b29`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          },
 
-      console.log("recieved this doctor from ML model->", result);
-      setDoctor_send(result);
+        );
+        const generalDocData = await getGenralDoctor.json();
+        setDoctor_send(generalDocData);
+        console.log("Fetched General Med Doctor->", generalDocData);
+      }
+      else {
+        
+        console.log("recieved this doctor from ML model->", result);
+        setDoctor_send(result);
+      }
 
       setMessages((prev) => [
         ...prev,

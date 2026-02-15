@@ -4,13 +4,11 @@ const urgencyStyles = {
   Low: "bg-green-100 text-green-700",
 };
 
-
-
-const AIResultCard = ({ data ,doctor}) => {
+const AIResultCard = ({ data, doctor }) => {
   console.log("receive doctor obj in ai resut card ", doctor);
 
   const specialization_field = data.specialization;
-  
+
   // getDoctorBySpecz();
   return (
     <div className="max-w-xl bg-white border rounded-lg p-4 space-y-3">
@@ -28,7 +26,7 @@ const AIResultCard = ({ data ,doctor}) => {
         <p className="font-medium">Suggested Doctor</p>
         <button className="text-blue-600 underline">
           <a target="_blank" href={`/doctors/${doctor.data._id}`}>
-            Dr. {doctor.data.name}
+            {doctor.data.name}
           </a>
         </button>
       </div>
